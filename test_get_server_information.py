@@ -53,5 +53,5 @@ def test_get_hardware_id_list(setup_swan_orchestrator):
 
 def test_get_task_infot(setup_swan_orchestrator):
     swan_orchestrator = setup_swan_orchestrator
-    task_info = swan_orchestrator.get_deployment_info(task_uuid="f7495e02-9b93-4701-9421-13347f597b4d")
+    task_info = swan_orchestrator.get_deployment_info(task_uuid="5f9d2925-bf55-4cb3-b829-20935b011ce1")
     print(json.dumps(task_info, indent=2))
