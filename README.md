@@ -21,7 +21,7 @@ pip install -r requirements.txt
 Create a `.env` file in the root directory and add the following environment variables:
 
 ```bash
-WALLET_ADDRESS=<?your_wallet_address>
+WALLET_ADDRESS=<your_wallet_address>
 PRIVATE_KEY=<your_private_key>
 SWAN_API_KEY=<your_swanchain_api_key>
 ```
