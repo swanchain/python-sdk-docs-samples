@@ -29,7 +29,13 @@ Make sure to replace the placeholders with your actual values.
 And have enough balance in your wallet to run the test.
 
 ## Run the test
+**Set Up the Virtual Environment:**
 
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # On Windows: venv\Scripts\activate
+    ```
+** Run the test
 ```bash
 python -m pytest <test_file_name>.py
 ```
