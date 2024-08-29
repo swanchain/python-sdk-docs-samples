@@ -1,4 +1,4 @@
-# Swan Sample Test
+# Python SDK Docs Samples
 
 This is a sample test for Swan. It is a simple test that tests the basic functionality of Swan.
 
