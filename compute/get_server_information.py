@@ -1,13 +1,9 @@
 import json
 import os
-import pytest
-import pandas as pd
 
 import dotenv
 import swan
 
-
-@pytest.fixture
 def setup_swan_orchestrator():
     # Load environment variables from the .env file
     dotenv.load_dotenv("../.env")
@@ -16,8 +12,8 @@ def setup_swan_orchestrator():
     return swan_orchestrator
 
 
-def test_get_hardware_id_list(setup_swan_orchestrator):
-    swan_orchestrator = setup_swan_orchestrator
+def get_hardware_id_list():
+    swan_orchestrator = setup_swan_orchestrator()
     available_hardware = swan_orchestrator.get_hardware_config()
     # Process JSON data into a DataFrame
     rows = []
@@ -45,13 +41,17 @@ def test_get_hardware_id_list(setup_swan_orchestrator):
                 "Status": instance["status"]
             })
 
-    df = pd.DataFrame(rows)
-
     # Display the DataFrame as a table
-    print(df)
+    print(rows)
 
 
-def test_get_task_infot(setup_swan_orchestrator):
-    swan_orchestrator = setup_swan_orchestrator
-    task_info = swan_orchestrator.get_deployment_info(task_uuid="5f9d2925-bf55-4cb3-b829-20935b011ce1")
+def get_task_info(task_uuid):
+    swan_orchestrator = setup_swan_orchestrator()
+    task_info = swan_orchestrator.get_deployment_info(task_uuid=task_uuid)
     print(json.dumps(task_info, indent=2))
+
+
+if __name__ == "__main__":
+    dotenv.load_dotenv()
+    get_hardware_id_list()
+    get_task_info("5f9d2925-bf55-4cb3-b829-20935b011ce1")

@@ -1,5 +1,0 @@
-pandas
-swan-sdk
-web3 == 6.15
-python-dotenv
-pytest
