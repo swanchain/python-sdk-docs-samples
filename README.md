@@ -1,10 +1,18 @@
 # Python SDK Docs Samples
 
-This is a sample test for Swan. It is a simple test that tests the basic functionality of Swan.
+Python samples for the [Swan SDK](https://github.com/swanchain/python-swan-sdk)
 
-## Install
-### Get Orchestrator API Key
+## Setup
 
+1. Install [`pip` and `virtualenv`][cloud_python_setup] if you do not already have them
+2. Clone the repository
+```bash
+
+git clone https://github.com/swanchain/python-sdk-docs-samples.git
+
+```
+
+3. Obtain authentication credentials.
 To use `swan-sdk`, an Orchestrator API key is required.
 
 - Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status), switch network to Mainnet.
@@ -12,12 +20,7 @@ To use `swan-sdk`, an Orchestrator API key is required.
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'
 
-
-### Install dependency
-```bash
-pip install -r requirements.txt
-```
-### Set up environment variables
+4. Set up environment variables
 Create a `.env` file in the root directory and add the following environment variables:
 
 ```bash
@@ -28,14 +31,23 @@ SWAN_API_KEY=<your_swanchain_api_key>
 Make sure to replace the placeholders with your actual values. 
 And have enough balance in your wallet to run the test.
 
-## Run the test
-**Set Up the Virtual Environment:**
-
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
-** Run the test
+## How to run a sample
+1. Change directory to one of the sample folders, e.g. cd `computing`
 ```bash
-python -m pytest <test_file_name>.py
+cd computing 
+```
+2. Set Up the Virtual Environment:**
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+3. Install the dependencies:
+```bash
+pip install -r requirements.txt
+```
+
+3. Run the sample:
+```bash
+python -m pytest -s  <test_file_name>.py
 ```
