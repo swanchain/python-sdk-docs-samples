@@ -9,40 +9,19 @@ def setup_swan_orchestrator():
     swan_orchestrator = swan.resource(api_key=os.getenv("SWAN_API_KEY"), network='mainnet', service_name='Orchestrator')
     return swan_orchestrator
 
-
-def get_hardware_id_list():
+# Get available instance resources
+def get_instance_resources():
     swan_orchestrator = setup_swan_orchestrator()
-    available_hardware = swan_orchestrator.get_hardware_config()
-    # Process JSON data into a DataFrame
-    rows = []
-    for instance in available_hardware:
-        if isinstance(instance["region"], list):  # Check if region is a list
-            for region in instance["region"]:
-                rows.append({
-                    "ID": instance["id"],
-                    "Name": instance["name"],
-                    "Description": instance["description"],
-                    "Type": instance["type"],
-                    "Region": region,
-                    "Price": instance["price"],
-                    "Status": instance["status"]
-                })
-        else:
-            # Handle the case where region is a string or other type
-            rows.append({
-                "ID": instance["id"],
-                "Name": instance["name"],
-                "Description": instance["description"],
-                "Type": instance["type"],
-                "Region": instance["region"],  # Just take the string directly
-                "Price": instance["price"],
-                "Status": instance["status"]
-            })
+    available_instances = swan_orchestrator.get_instance_resources()
+    print(json.dumps(available_instances, indent=2, ensure_ascii=False))
 
-    # Display the DataFrame as a table
-    print(rows)
+# Get all instance list
+def get_instance_resources_all():
+    swan_orchestrator = setup_swan_orchestrator()
+    all_instances = swan_orchestrator.get_instance_resources(False)
+    print(json.dumps(all_instances, indent=2, ensure_ascii=False))
 
-
+# Get existing task info
 def get_task_info(task_uuid):
     swan_orchestrator = setup_swan_orchestrator()
     task_info = swan_orchestrator.get_deployment_info(task_uuid=task_uuid)
@@ -52,5 +31,6 @@ def get_task_info(task_uuid):
 if __name__ == "__main__":
     # Load environment variables from the .env file
     dotenv.load_dotenv("../.env")
-    get_hardware_id_list()
+    # get_instance_resources_all()
+    get_instance_resources()
     get_task_info("5f9d2925-bf55-4cb3-b829-20935b011ce1")

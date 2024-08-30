@@ -35,7 +35,7 @@ And have enough balance in your wallet to run the test.
 
 ## How to run a sample
 
-1. Change directory to one of the sample folders, e.g. cd `computing`
+1. Change directory to one of the sample folders, e.g. cd `compute`
 
 ```bash
 cd compute 

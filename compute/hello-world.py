@@ -18,5 +18,6 @@ def hello_world():
     print(task_info)
 
 if __name__ == "__main__":
-    dotenv.load_dotenv()
+    # Load environment variables from the .env file
+    dotenv.load_dotenv("../.env")
     hello_world()
