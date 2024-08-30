@@ -1,6 +1,6 @@
 # Swan SDK Orchestrator Task Samples
 
-This directory contains samples for Swan Orchestrator. Swan Orchestrator is the Web3 cloud computing solution for tasks creation, deployment and management. For more information checkout [Swan Developer Docs](https://docs.swanchain.io/).
+This directory contains samples for Swan Orchestrator. Swan Orchestrator is the Web3 cloud computing solution for tasks creation, deployment and management. User can create and manage tasks through samples under this directory. For more information checkout [Swan Developer Docs](https://docs.swanchain.io/).
 
 ## Setup
 
@@ -20,6 +20,10 @@ Steps to get an API Key:
 1. Clone the python-sdk-docs-samples  and change directory to the directory you want to use.
 ```bash
 $ git clone https://github.com/swanchain/python-sdk-docs-samples.git
+```
+and
+```bash
+$ cd computing-tasks
 ```
 2. Install and updgrade pip and virtualenv if you do not already have them.
 3. Create virtualenv compatible with Python 3.7+
@@ -57,7 +61,14 @@ SWAN_API_KEY=<your_swanchain_api_key>
 ```
 4. Load your personal information
 ```python
+from dotenv import loaddotenv
+loaddotenv()
 
+import os
+
+WALLET_ADDRESS = os.getenv('WALLET_ADDRESS')
+PRIVATE_KEY = os.getenv('PRIVATE_KEY')
+SWAN_API_KEY = os.getenv('SWAN_API_KEY')
 ```
 
 ## Run Samples
