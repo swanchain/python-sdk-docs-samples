@@ -12,7 +12,6 @@ def hello_world():
         app_repo_image='hello_world',
         wallet_address=os.getenv("WALLET_ADDRESS"),
         private_key=os.getenv("PRIVATE_KEY"),
-        hardware_id=0,  # 0 is the smallest hardware:CPU only · 2 vCPU · 2 GiB  Memory
     )
     task_uuid = result['id']
     task_info = orchestrator.get_deployment_info(task_uuid=task_uuid)

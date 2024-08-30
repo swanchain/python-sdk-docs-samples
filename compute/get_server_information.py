@@ -5,8 +5,6 @@ import dotenv
 import swan
 
 def setup_swan_orchestrator():
-    # Load environment variables from the .env file
-    dotenv.load_dotenv("../.env")
     # Initialize the Swan Orchestrator with API key and network
     swan_orchestrator = swan.resource(api_key=os.getenv("SWAN_API_KEY"), network='mainnet', service_name='Orchestrator')
     return swan_orchestrator
@@ -52,6 +50,7 @@ def get_task_info(task_uuid):
 
 
 if __name__ == "__main__":
-    dotenv.load_dotenv()
+    # Load environment variables from the .env file
+    dotenv.load_dotenv("../.env")
     get_hardware_id_list()
     get_task_info("5f9d2925-bf55-4cb3-b829-20935b011ce1")
