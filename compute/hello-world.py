@@ -39,7 +39,7 @@ class HelloWorld:
         async def wait_for_url(url):
             start_time = time.time()
             async with aiohttp.ClientSession() as session:
-                # 5 minutes for hello world
+                # after 5 minutes, assume app url is not running
                 while time.time() - start_time < 300:
                     async with session.get(url) as resp:
                         if resp.status == 200:
