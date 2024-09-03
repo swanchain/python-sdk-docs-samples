@@ -36,8 +36,8 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-### Store Your Environmental Variables Securely 
-Python-dotenv is recommended to be used to store environmental variables safely. (Contained within requirements.txt)
+### Store Your Environment Variables Securely 
+Python-dotenv is recommended to be used to store environment variables safely. (Contained within requirements.txt)
 1. Install python-dotenv (if you have not)
 ```bash
 $ pip install python-dotenv
@@ -61,8 +61,8 @@ SWAN_API_KEY=<your_swanchain_api_key>
 ```
 4. Load your personal information
 ```python
-from dotenv import loaddotenv
-loaddotenv()
+from dotenv import load_dotenv
+load_dotenv()
 
 import os
 
@@ -72,3 +72,23 @@ SWAN_API_KEY = os.getenv('SWAN_API_KEY')
 ```
 
 ## Run Samples
+
+### Connect to Orchestrator as Developer (with Swan API Key)
+```bash
+$ python samples/computing-tasks/connect_orchestrator_as_developer.py
+```
+
+### Create Task
+```bash
+$ python samples/computing-tasks/create_task.py
+```
+
+### Renew Task / Extend Task Duration
+```bash
+$ python samples/computing-tasks/renew_task.py 
+```
+
+### Terminate Task
+```bash
+$ python samples/computing-tasks/terminate_task.py
+```
