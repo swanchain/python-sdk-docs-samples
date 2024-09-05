@@ -59,7 +59,8 @@ WALLET_ADDRESS=<your_wallet_address>
 PRIVATE_KEY=<your_private_key>
 SWAN_API_KEY=<your_swanchain_api_key>
 ```
-4. Load your personal information
+4. Load your personal information (Optional)
+We recommand storing personal information as environment variables for safety.
 ```python
 from dotenv import load_dotenv
 load_dotenv()
@@ -79,7 +80,7 @@ Retrieve all currently avaliable CP resources online.
 $ python computing/get_instance_resources.py
 ```
 
-### Get Instance Information (hardware id & price)
+### Get Instance Information (price)
 Retrieve CP resources detail with resources type.
 ```bash
 $ python samples/computing/get_instance_information.py

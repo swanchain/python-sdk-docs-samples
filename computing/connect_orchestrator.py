@@ -1,19 +1,6 @@
-import os
-
-from dotenv import load_dotenv
-
 import swan
 from swan import Orchestrator
 
-def load_environmenat_variables() -> str:
-    """Load Swan API key from .env file.
-
-    Return: swan_api_key (Do not share with others)
-    """
-    # Load environment variables from .env file
-    load_dotenv()
-    swan_api_key = os.getenv('SWAN_API_KEY')
-    return swan_api_key
 
 def login_to_swan_orchestrator_through_api_key(swan_api_key: str) -> Orchestrator:
     """Login into Swan Orchestractor with API Key.
@@ -38,7 +25,7 @@ def verify_connection(swan_orchestrator: Orchestrator):
     return swan_orchestrator.get_contract_info()
 
 if __name__ == '__main__':
-    swan_api_key = load_environmenat_variables()
+    swan_api_key = '<swan_api_key>'
     swan_orchestrator = login_to_swan_orchestrator_through_api_key(swan_api_key=swan_api_key)
     # Make sure connected to correct Orchestrator backend API.
     print(f'Connected to \x1b[6;30;42m{swan_orchestrator.swan_url}\x1b[0m')

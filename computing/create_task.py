@@ -1,30 +1,21 @@
-import os
 import logging
 import time
 import json
 
-from dotenv import load_dotenv
-
 import swan
 from swan import Orchestrator
 
-def setup():
+def setup(swan_api_key: str):
     """Setup required informations for task deployment.
 
     SWAN_API_KEY: Swan Orchestrator API key.
     WALLET_ADDRESS: Users Web3 wallet address.
     PRIVATE_KEY: Users Web3 wallet prviate address for signing message/signature.
     """
-    # Load .env into environment variables
-    load_dotenv()
-    # Get required information from environment variables
-    swan_api_key = os.getenv('SWAN_API_KEY')
-    wallet_address=os.getenv("WALLET_ADDRESS")
-    private_key=os.getenv("PRIVATE_KEY")
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        network='testnet', 
+        network='mainnet', 
         service_name='Orchestrator'
     )
     return wallet_address, private_key, swan_orchestrator
@@ -89,8 +80,11 @@ if __name__ == '__main__':
     # Repo URI for deployment (A simple Hello World! Can be replaced with custom test repo.)
     repo_uri = 'https://github.com/swanchain/awesome-swanchain/tree/main/hello_world'
 
+    swan_api_key = '<swan_api_key>'
+    wallet_address = '<wallet_address>'
+    private_key = '<private_key>'
     # Connect to Orchestrator
-    wallet_address, private_key, swan_orchestrator = setup()
+    swan_orchestrator = setup(swan_api_key)
 
     # Deploy task
     result = deploy_task(

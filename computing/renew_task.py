@@ -1,24 +1,15 @@
 import os
-import json
-
-from dotenv import load_dotenv
 
 import swan
 from swan import Orchestrator
 
-def setup():
+def setup(swan_api_key: str):
     """Setup required informations for task deployment.
 
     SWAN_API_KEY: Swan Orchestrator API key.
     WALLET_ADDRESS: Users Web3 wallet address.
     PRIVATE_KEY: Users Web3 wallet prviate address for signing message/signature.
     """
-    # Load .env into environment variables
-    load_dotenv()
-    # Get required information from environment variables
-    swan_api_key = os.getenv('SWAN_API_KEY')
-    wallet_address=os.getenv("WALLET_ADDRESS")
-    private_key=os.getenv("PRIVATE_KEY")
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
@@ -54,20 +45,15 @@ def extend_task_duration(
     return result
 
 if __name__ == '__main__':
-    # Load task UUID
-    # Using task info from samples/computing-tasks/create_task.py
-    # Can be replace with other running task UUID
-    try:
-        directory = './task_info.json'
-        with open(directory, 'r') as file:
-            data = json.load(file)
-    except:
-        pass
-    task_uuid = data['uuid']
-    instance_type = data['task_detail']['hardware']
+    # Input task UUID
+    task_uuid = '<uuid>'
+    instance_type = '<instance_type>'
 
+    swan_api_key = '<swan_api_key>'
+    wallet_address = '<wallet_address>'
+    private_key = '<private_key>'
     # Connect to Orchestrator
-    wallet_address, private_key, swan_orchestrator = setup()
+    swan_orchestrator = setup(swan_api_key)
 
     # Extend existing task
     tx_hash = extend_task_duration(
