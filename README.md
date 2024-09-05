@@ -16,7 +16,7 @@ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 3. Obtain authentication credentials.
    To use `swan-sdk`, an Orchestrator API key is required.
 
-- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status), switch network to Mainnet.
+- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'

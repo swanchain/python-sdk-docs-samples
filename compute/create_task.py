@@ -15,7 +15,6 @@ def setup(swan_api_key: str):
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        network='mainnet', 
         service_name='Orchestrator'
     )
     return wallet_address, private_key, swan_orchestrator

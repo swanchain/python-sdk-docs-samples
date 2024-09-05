@@ -23,7 +23,7 @@ $ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 ```
 and
 ```bash
-$ cd computing
+$ cd compute
 ```
 2. Install and updgrade pip and virtualenv if you do not already have them.
 3. Create virtualenv compatible with Python 3.7+
@@ -77,37 +77,37 @@ SWAN_API_KEY = os.getenv('SWAN_API_KEY')
 ### Get Instance Resources
 Retrieve all currently available CP resources online.
 ```bash
-$ python computing/get_instance_resources.py
+$ python compute/get_instance_resources.py
 ```
 
 ### Get Instance Information (price)
 Retrieve CP resources detail with resources type.
 ```bash
-$ python samples/computing/get_instance_information.py
+$ python samples/compute/get_instance_information.py
 ```
 
 ### Instance Configuration Example
 Detailed breakdown of instance configuration structure and usage.
 ```bash
-$ python computing/instance_configuration_example.py
+$ python compute/instance_configuration_example.py
 ```
 
 ### Connect to Orchestrator (with Swan API Key)
 ```bash
-$ python computing-tasks/connect_orchestrator.py
+$ python compute-tasks/connect_orchestrator.py
 ```
 
 ### Create Task
 ```bash
-$ python computing-tasks/create_task.py
+$ python compute-tasks/create_task.py
 ```
 
 ### Renew Task / Extend Task Duration
 ```bash
-$ python computing-tasks/renew_task.py 
+$ python compute-tasks/renew_task.py 
 ```
 
 ### Terminate Task
 ```bash
-$ python computing-tasks/terminate_task.py
+$ python compute-tasks/terminate_task.py
 ```
