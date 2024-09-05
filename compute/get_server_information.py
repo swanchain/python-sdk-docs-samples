@@ -6,7 +6,7 @@ import swan
 
 def setup_swan_orchestrator():
     # Initialize the Swan Orchestrator with API key and network
-    swan_orchestrator = swan.resource(api_key=os.getenv("SWAN_API_KEY"), network='mainnet', service_name='Orchestrator')
+    swan_orchestrator = swan.resource(api_key=os.getenv("SWAN_API_KEY"), service_name='Orchestrator')
     return swan_orchestrator
 
 # Get available instance resources
