@@ -10,7 +10,7 @@ This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
 Steps to get an API Key:
 
-- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status), switch network to Mainnet.
+- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'
