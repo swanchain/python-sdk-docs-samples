@@ -10,7 +10,7 @@ class HelloWorld:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
-            network='testnet',
+            network='mainnet',
             service_name='Orchestrator'
         )
             
