@@ -1,7 +1,7 @@
 from swan import Orchestrator
 
 def instance_configuration(instance_type: str) -> dict:
-    """Retrieve currently avaliable orchestrator cp resources (instance).
+    """Retrieve currently available orchestrator cp resources (instance).
 
     Args:
         avalibility: True for availiable instance configuration only; False for all configuration.
@@ -12,8 +12,8 @@ def instance_configuration(instance_type: str) -> dict:
     # Create Orchestrator instance.
     swan_orchestrator = Orchestrator(api_key=None, login=False)
     # Retrieve all CP resources.
-    avaliable_resources = swan_orchestrator.get_instance_resources(available=False)
-    instance_config = [resource for resource in avaliable_resources if resource['instance_type'] == instance_type][0]
+    available_resources = swan_orchestrator.get_instance_resources(available=False)
+    instance_config = [resource for resource in available_resources if resource['instance_type'] == instance_type][0]
     return instance_config
 
 def display_config_info(instance_config: dict):

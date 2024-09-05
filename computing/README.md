@@ -75,7 +75,7 @@ SWAN_API_KEY = os.getenv('SWAN_API_KEY')
 ## Run Samples
 
 ### Get Instance Resources
-Retrieve all currently avaliable CP resources online.
+Retrieve all currently available CP resources online.
 ```bash
 $ python computing/get_instance_resources.py
 ```
