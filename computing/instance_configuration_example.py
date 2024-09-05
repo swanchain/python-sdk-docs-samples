@@ -1,5 +1,3 @@
-import pprint
-
 from swan import Orchestrator
 
 def instance_configuration(instance_type: str) -> dict:
@@ -12,9 +10,9 @@ def instance_configuration(instance_type: str) -> dict:
         A list of dictionary of Swan Instance CP configuration Info.
     """
     # Create Orchestrator instance.
-    so = Orchestrator(api_key=None, login=False)
+    swan_orchestrator = Orchestrator(api_key=None, login=False)
     # Retrieve all CP resources.
-    avaliable_resources = so.get_instance_resources(available=False)
+    avaliable_resources = swan_orchestrator.get_instance_resources(available=False)
     instance_config = [resource for resource in avaliable_resources if resource['instance_type'] == instance_type][0]
     return instance_config
 

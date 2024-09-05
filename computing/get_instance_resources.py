@@ -1,7 +1,7 @@
-import pprint
+import json
 from swan import Orchestrator
 
-def orchestrator_cp_resources(avaliability:bool=True) -> list[dict]:
+def orchestrator_cp_resources(availability:bool=True) -> list[dict]:
     """Retrieve currently avaliable orchestrator cp resources (instance).
 
     Args:
@@ -11,13 +11,13 @@ def orchestrator_cp_resources(avaliability:bool=True) -> list[dict]:
         A list of dictionary of Swan Instance CP configuration Info.
     """
     # Create Orchestrator instance.
-    so = Orchestrator(api_key=None, login=False)
+    swan_orchestrator = Orchestrator(api_key=None, login=False)
     # Retrieve avaliable resources. (CPs that are currently avaliable)
-    avaliable_resources = so.get_instance_resources(available=avaliability)
+    avaliable_resources = swan_orchestrator.get_instance_resources(available=availability)
     return avaliable_resources
 
 if __name__ == '__main__':
     # Avaliable resources
     result = orchestrator_cp_resources()
     # Output the first instance configuration on the list
-    pprint.pprint(result[:1])
+    print(json.dumps(result[:1], indent=2, ensure_ascii=False))

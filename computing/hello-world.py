@@ -5,7 +5,7 @@ import swan
 
 
 dotenv.load_dotenv()
-# default use testnet
+# default use mainnet
 orchestrator = swan.resource(api_key=os.getenv("SWAN_API_KEY"), network='mainnet',service_name='Orchestrator')
 
 result = orchestrator.create_task(

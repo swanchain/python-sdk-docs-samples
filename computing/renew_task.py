@@ -1,7 +1,4 @@
-import pprint
 import os
-import logging
-import time
 import json
 
 from dotenv import load_dotenv
@@ -25,7 +22,7 @@ def setup():
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        network='testnet', 
+        network='mainnet', 
         service_name='Orchestrator'
     )
     return wallet_address, private_key, swan_orchestrator
@@ -55,7 +52,6 @@ def extend_task_duration(
         instance_type=instance_type
     )
     return result
-
 
 if __name__ == '__main__':
     # Load task UUID

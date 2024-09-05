@@ -1,4 +1,3 @@
-import pprint
 import os
 
 from dotenv import load_dotenv
@@ -28,7 +27,7 @@ def login_to_swan_orchestrator_through_api_key(swan_api_key: str) -> Orchestrato
     # Create Orchestrator instance.
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        network='testnet', 
+        network='mainnet', 
         service_name='Orchestrator'
     )
     return swan_orchestrator
@@ -46,4 +45,4 @@ if __name__ == '__main__':
 
     verification = verify_connection(swan_orchestrator=swan_orchestrator)
     if verification:
-        print('Connected to Swan Testnet.')
+        print('Connected to Swan mainnet.')

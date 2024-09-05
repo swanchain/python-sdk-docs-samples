@@ -1,2 +1,0 @@
-swan-sdk==0.0.7
-python-dotenv==1.0.1
