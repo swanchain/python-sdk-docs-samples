@@ -57,7 +57,7 @@ pip install -r requirements.txt
 3. Run the sample:
 
 ```bash
-python -m pytest -s  <test_file_name>.py
+python compute/<sample_name>.py
 ```
 
 
