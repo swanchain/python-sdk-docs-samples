@@ -1,3 +1,2 @@
 swan-sdk
 python-dotenv
-pytest
