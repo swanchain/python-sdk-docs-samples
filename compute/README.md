@@ -83,7 +83,7 @@ $ python compute/get_instance_resources.py
 ### Get Instance Information (price)
 Retrieve CP resources detail with resources type.
 ```bash
-$ python samples/compute/get_instance_information.py
+$ python compute/get_instance_information.py
 ```
 
 ### Instance Configuration Example
@@ -94,20 +94,20 @@ $ python compute/instance_configuration_example.py
 
 ### Connect to Orchestrator (with Swan API Key)
 ```bash
-$ python compute-tasks/connect_orchestrator.py
+$ python compute/connect_orchestrator.py
 ```
 
 ### Create Task
 ```bash
-$ python compute-tasks/create_task.py
+$ python compute/create_task.py
 ```
 
 ### Renew Task / Extend Task Duration
 ```bash
-$ python compute-tasks/renew_task.py 
+$ python compute/renew_task.py 
 ```
 
 ### Terminate Task
 ```bash
-$ python compute-tasks/terminate_task.py
+$ python compute/terminate_task.py
 ```
