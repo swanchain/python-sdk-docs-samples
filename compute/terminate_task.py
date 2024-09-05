@@ -1,4 +1,3 @@
-import os
 import json
 
 import swan
@@ -14,10 +13,9 @@ def setup(swan_api_key: str):
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        network='mainnet', 
         service_name='Orchestrator'
     )
-    return wallet_address, private_key, swan_orchestrator
+    return swan_orchestrator
 
 def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
     """Create a task early termination request.
@@ -39,8 +37,6 @@ if __name__ == '__main__':
     task_uuid = '<task_uuid>'
 
     swan_api_key = '<swan_api_key>'
-    wallet_address = '<wallet_address>'
-    private_key = '<private_key>'
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 

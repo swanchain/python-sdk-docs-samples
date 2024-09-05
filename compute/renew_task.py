@@ -47,6 +47,7 @@ def extend_task_duration(
 if __name__ == '__main__':
     # Input task UUID
     task_uuid = '<uuid>'
+    # instance_type has to be same as the originals
     instance_type = '<instance_type>'
 
     swan_api_key = '<swan_api_key>'
