@@ -43,13 +43,13 @@ def extend_task_duration(
 
 if __name__ == '__main__':
     # Input task UUID
-    task_uuid = 'f1c6d8f5-f2bb-4ba9-9a41-045bb787fa8a'
+    task_uuid = '<uuid>'
     # instance_type has to be same as the originals
-    instance_type = 'C1ae.small'
+    instance_type = '<instance_type>'
 
-    swan_api_key = 'd7odWACgJH'
-    wallet_address = '0x61c3e03dbed55f5DE213732e816F8A8Fd6E9bfF0'
-    private_key = '9b7b90e22f0ac48611e4c9e9a09b008c013780a8bb28e213b60e5ad15953258c'
+    swan_api_key = '<swan_api_key>'
+    wallet_address = '<wallet_address>'
+    private_key = '<private_key>'
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
