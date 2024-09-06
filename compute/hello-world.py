@@ -28,7 +28,14 @@ class HelloWorld:
     def wait_for_running(self):
         # wait for app URLs be generated
         app_urls = []
+        timeout_for_deployment = 20 * 60
+        start_time = time.time()
         while True:
+            if time.time() - start_time > timeout_for_deployment:
+                task_info = self.orchestrator.get_deployment_info(task_uuid=self.task_uuid)
+                task_status = task_info['data']['task']['status']
+                logging.error(f"Timeout for deployment, task status: {task_status}")
+                return
             time.sleep(5)
             if app_urls := self.orchestrator.get_real_url(task_uuid=self.task_uuid):
                 logging.info(f"App will be running at {app_urls}")
