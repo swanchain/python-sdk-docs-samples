@@ -40,7 +40,6 @@ if __name__ == '__main__':
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
-
     # Terminate existing task
     result = terminate_existing_task(swan_orchestrator=swan_orchestrator, task_uuid=task_uuid)
     print(json.dumps(result, indent=2, ensure_ascii=False))

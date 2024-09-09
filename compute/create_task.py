@@ -17,7 +17,7 @@ def setup(swan_api_key: str):
         api_key=swan_api_key, 
         service_name='Orchestrator'
     )
-    return wallet_address, private_key, swan_orchestrator
+    return swan_orchestrator
 
 def deploy_task(repo_uri: str, wallet_address: str, private_key: str, swan_orchestrator: Orchestrator) -> dict:
     """Deploy a task to Swan Chain.

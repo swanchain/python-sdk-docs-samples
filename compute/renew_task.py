@@ -13,7 +13,7 @@ def setup(swan_api_key: str):
         api_key=swan_api_key, 
         service_name='Orchestrator'
     )
-    return wallet_address, private_key, swan_orchestrator
+    return swan_orchestrator
 
 def extend_task_duration(
         swan_orchestrator: Orchestrator, 
