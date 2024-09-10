@@ -1,55 +1,72 @@
-import logging
 import os
 from dotenv import load_dotenv
 from swan_mcs import APIClient, BucketAPI
 
 
 def bucket_folders(bucket_client: BucketAPI, bucket_name: str) -> None:
+    """Create the different types of folders
+
+    Args:
+        bucket_client: The BucketApi client to use MultiChain Storage.
+        bucket_name: The name of the bucket.
+
+    Return:
+        None.
+    """
+
+    # try to delete the bucket, this is so that the program can run again properly if an error occurs
+    # this will print an error if the bucket does not yet exist.
+    bucket_client.delete_bucket(bucket_name)
+
     # create a bucket and store the function return
     bucket_create_success = bucket_client.create_bucket(bucket_name)
 
-    # exit if the bucket can not be created
+    # return if the bucket can not be created
     if not bucket_create_success:
-        logging.info(f"Error creating bucket: {bucket_name}")
-        exit()
-
+        print(f"Error creating bucket: {bucket_name}")
+        return
 
     # create a folder
     # If you want to place the folder directly in the root directory, you can leave the prefix field empty
     folder_name = "my-test-folder"
     create_folder_status = bucket_client.create_folder(bucket_name, folder_name, prefix='my-test-prefix')
     if not create_folder_status:
-        logging.info(f"Failed to create folder{folder_name}")
+        print(f"Failed to create folder: {folder_name}")
 
 
-    # upload a MCS folder under bucket_name/object_name
-    object_name = "my-test-object"
-    mcs_folder_path = "my-test-mcs-folder_path"
+    # upload a MCS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
+    object_name = "my-mcs-test-object"
+    mcs_folder_path = "my-mcs-test-folder"
     mcs_folder_upload_status = bucket_client.upload_folder(bucket_name, object_name, mcs_folder_path)
-    logging.info(mcs_folder_upload_status.to_json())
+    print("MCS folder file information:")
+    for file_info in mcs_folder_upload_status:
+        print(file_info.to_json())
 
 
-    # upload an IPFS folder
-    object_name = "my-test-object"
-    ipfs_folder_path = "my-test-ipfs-path"
-    ipfs_folder_upload_status= bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
-    logging.info(ipfs_folder_upload_status.to_json())
+    # upload an IPFS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
+    object_name = "my-ipfs-test-object"
+    ipfs_folder_path = "my-ipfs-test-folder"
+    ipfs_folder_upload_info= bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
+    print("IPFS folder information:")
+    print(ipfs_folder_upload_info.to_json())
 
     # delete the bucket
     bucket_delete_success = bucket_client.delete_bucket(bucket_name)
 
     # print error if the bucket could not be deleted
     if not bucket_delete_success:
-        logging.info(f"Error deleting bucket:{bucket_name}")
+        print(f"Error deleting bucket: {bucket_name}")
+
 
 if __name__ == '__main__':
+    # load environment variables
     load_dotenv("../.env")
 
     # create the bucket client
-    API_KEY = os.get("API_KEY")
-    ACCESS_TOKEN = os.get("ACCESS_TOKEN")
-    CHAIN_NAME = os.get("CHAIN_NAME")
-    mcs_api = APIClient(API_KEY, ACCESS_TOKEN, CHAIN_NAME)
+    API_KEY = os.getenv("API_KEY")
+    CHAIN_NAME = os.getenv("CHAIN_NAME")
+    # set is_calibration=True if using the calibration MCS
+    mcs_api = APIClient(API_KEY, CHAIN_NAME, is_calibration=True)
     bucket_client = BucketAPI(mcs_api)
 
     bucket_name = "my-test-bucket"

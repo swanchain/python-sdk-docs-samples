@@ -1,3 +1,2 @@
 python-MCS-SDK
-logging
 python-dotenv

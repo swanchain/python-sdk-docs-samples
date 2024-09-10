@@ -7,6 +7,8 @@ This directory contains samples for Swan MultiChain Storage System. Swan MultiCh
 
 ### Authentication (API Key)
 
+The following is a template since I am unable to get the api key myself, someone with access to the MCS service please change these steps.
+
 This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
 Steps to get an API Key:
@@ -17,6 +19,8 @@ Steps to get an API Key:
 - Click 'Show API-Key' -> 'New API Key'
 - Store your API Key safely, do not share with others.
 
+The steps below are all good
+
 ### Install Dependencies
 1. Clone the python-sdk-docs-samples  and change directory to the directory you want to use.
 ```bash
@@ -24,7 +28,7 @@ $ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 ```
 and
 ```bash
-$ cd compute
+$ cd mcs
 ```
 2. Install and updgrade pip and virtualenv if you do not already have them.
 3. Create virtualenv compatible with Python 3.7+
@@ -56,8 +60,7 @@ public address will be required for authorization on Swan Orchestrator. \
 private address will be required for signing onchain transactions. \
 API key will be required for using Swan Orchestrator APIs.
 ```txt
-API_KEY = <your__api_key>
-ACCESS_TOKEN = <access_token>
+API_KEY = <your_api_key>
 CHAIN_NAME = <chain_name>
 ```
 4. Load your personal information (Optional)
@@ -69,7 +72,6 @@ load_dotenv()
 import os
 
 API_KEY = os.get("API_KEY")
-ACCESS_TOKEN = os.get("ACCESS_TOKEN")
 CHAIN_NAME = os.get("CHAIN_NAME")
 ```
 
@@ -88,18 +90,18 @@ $ python mcs/info_bucket.py
 ```
 
 ### Create and Upload Folders to a Bucket
-Detailed breakdown of how to create folders and upload mcs and ipfs folders.
+Detailed breakdown of how to create folders and upload MCS and IPFS folders.
 ```bash
 $ python mcs/folders_bucket.py
 ```
 
-### Upload, Download, and Delete a file a bucket
+### Upload, Download, and Delete a file in a Bucket
 Detailed breakdown of how to upload, download, and delete a file in a Bucket.
 ```bash
 $ python mcs/file_bucket.py
 ```
 
-### Get info on files in a Bucket
+### Get info of files in a Bucket
 Retrieve information on a particular file or all files in a Bucket.
 ```bash
 $ python compute/create_task.py
