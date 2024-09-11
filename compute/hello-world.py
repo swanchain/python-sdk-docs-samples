@@ -21,14 +21,19 @@ class HelloWorld:
             instance_type='C1ae.small',
             auto_pay=True
         )
-        self.task_uuid = result['task_uuid']
+        self.task_uuid = result.get('task_uuid') if result else None
+        if not self.task_uuid:
+            logging.error(f"Failed to create task")
+            return
         task_info = self.orchestrator.get_deployment_info(task_uuid=self.task_uuid)
         logging.info(task_info)
 
     def wait_for_running(self):
+        if not self.task_uuid:
+            return
         # wait for app URLs be generated
         app_urls = []
-        timeout_for_deployment = 20 * 60
+        timeout_for_deployment = 20 * 60    # 20 minutes
         start_time = time.time()
         while True:
             if time.time() - start_time > timeout_for_deployment:
