@@ -1,3 +1,2 @@
 swan-sdk==0.0.7
-python-dotenv
-pytest==8.3.2
+python-dotenv==1.0.1
