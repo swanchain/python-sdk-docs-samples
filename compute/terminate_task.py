@@ -1,5 +1,7 @@
 import json
+import os
 
+import dotenv
 import swan
 from swan import Orchestrator
 
@@ -33,10 +35,12 @@ def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
     return result
 
 if __name__ == '__main__':
+    dotenv.load_dotenv("../.env")
+
     # Input task UUID
     task_uuid = '<task_uuid>'
 
-    swan_api_key = '<swan_api_key>'
+    swan_api_key = os.getenv("SWAN_API_KEY")
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
