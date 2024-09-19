@@ -1,6 +1,10 @@
-from swan import Orchestrator
+import logging
 
-def instance_configuration(instance_type: str) -> dict:
+from swan import Orchestrator
+from swan.object import InstanceResource
+
+
+def instance_configuration(instance_type: str) -> InstanceResource:
     """Retrieve currently available orchestrator cp resources (instance).
 
     Args:
@@ -16,6 +20,7 @@ def instance_configuration(instance_type: str) -> dict:
     instance_config = [resource for resource in available_resources if resource['instance_type'] == instance_type][0]
     return instance_config
 
+
 def display_config_info(instance_config: dict):
     """Display detailed explaination of instance configuration.
 
@@ -30,16 +35,17 @@ def display_config_info(instance_config: dict):
         instance_config: dictionary of instance configuration details.
     """
     # Instance type
-    print(f'\x1b[6;30;42minstance_type (Name):\x1b[0m {instance_config['instance_type']}')
+    logging.info(f"\x1b[6;30;42minstance_type (Name):\x1b[0m {instance_config['instance_type']}")
     # Important information
-    print('\x1b[0;30;44mImportant Information (Affect Task Deployment)\x1b[0m')
-    print(f'\x1b[0;30;41mprice (SwanToken/hr):\x1b[0m {instance_config['price']}')
-    print(f'\x1b[0;30;41mregion (Currently availiable regions):\x1b[0m {instance_config['region']}')
+    logging.info("\x1b[0;30;44mImportant Information (Affect Task Deployment)\x1b[0m")
+    logging.info(f"\x1b[0;30;41mprice (SwanToken/hr):\x1b[0m {instance_config['price']}")
+    logging.info(f"\x1b[0;30;41mregion (Currently availiable regions):\x1b[0m {', '.join(instance_config['region'])}")
     # Other information
-    print('\x1b[0;30;44mOther Information (Useful Knowledge)\x1b[0m')
-    print(f'\x1b[0;30;43mtype (CPU or GPU):\x1b[0m {instance_config['type']}')
-    print(f'\x1b[0;30;43mstatus (If any instances are available):\x1b[0m {instance_config['status']}')
-    print(f'\x1b[0;30;43mdescription (Brief summary of instance config):\x1b[0m {instance_config['description']}')
+    logging.info("\x1b[0;30;44mOther Information (Useful Knowledge)\x1b[0m")
+    logging.info(f"\x1b[0;30;43mtype (CPU or GPU):\x1b[0m {instance_config['type']}")
+    logging.info(f"\x1b[0;30;43mstatus (If any instances are available):\x1b[0m {instance_config['status']}")
+    logging.info(f"\x1b[0;30;43mdescription (Brief summary of instance config):\x1b[0m {instance_config['description']}")
+
 
 if __name__ == '__main__':
     instance_type = 'G1ae.small'

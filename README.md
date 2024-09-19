@@ -36,13 +36,7 @@ And have enough balance in your wallet to run the test.
 
 ## How to run a sample
 
-1. Change directory to one of the sample folders, e.g. cd `compute`
-
-```bash
-cd compute 
-```
-
-2. Set Up the Virtual Environment:**
+1. Set Up the Virtual Environment:**
 
 ```bash
 python -m venv venv

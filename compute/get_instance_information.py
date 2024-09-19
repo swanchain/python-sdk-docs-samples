@@ -6,6 +6,7 @@ def swan_orchestrator_connection() -> Orchestrator:
     swan_orchestrator = Orchestrator(api_key=None, login=False)
     return swan_orchestrator
 
+
 def search_instance_price_with_instance_type(instance_type: str, swan_orchestrator: Orchestrator) -> int:
     """Find the hardward_id of the given instance_type.
 
@@ -18,6 +19,7 @@ def search_instance_price_with_instance_type(instance_type: str, swan_orchestrat
     # Retrieve instance price.
     instance_price = swan_orchestrator.get_instance_price(instance_type=instance_type)
     return instance_price
+
 
 if __name__ == '__main__':
     swan_orchestrator = swan_orchestrator_connection()
