@@ -52,7 +52,7 @@ def bucket_info(bucket_client: swan.BucketAPI, bucket_names: list[str]) -> None:
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv()
+    load_dotenv('../')
 
     # get the api key
     api_key = os.getenv('MCS_API_KEY')

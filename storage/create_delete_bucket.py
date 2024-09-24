@@ -42,7 +42,7 @@ def bucket_create_delete(bucket_client: swan.BucketAPI, bucket_name: str) -> Non
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv()
+    load_dotenv('../')
 
     # get the api key
     api_key = os.getenv('MCS_API_KEY')

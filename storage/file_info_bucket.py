@@ -76,7 +76,7 @@ def bucket_file_info(bucket_client: swan.BucketAPI, bucket_name, object_name: st
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv()
+    load_dotenv('../')
 
     # get the api key
     api_key = os.getenv('MCS_API_KEY')
