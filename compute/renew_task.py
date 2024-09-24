@@ -1,12 +1,21 @@
+import os
+import dotenv
+import logging
+import json
+
 import swan
 from swan import Orchestrator
+from swan.object import TaskRenewalResult
 
-def setup(swan_api_key: str):
+
+def setup(swan_api_key: str) -> Orchestrator:
     """Setup required informations for task deployment.
 
-    SWAN_API_KEY: Swan Orchestrator API key.
-    WALLET_ADDRESS: Users Web3 wallet address.
-    PRIVATE_KEY: Users Web3 wallet prviate address for signing message/signature.
+    Args:
+        swan_api_key: Swan Orchestrator API key.
+    
+    Return:
+        Swan Orchestrator object connected to Swan Orchestrator APIs.
     """
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
@@ -15,13 +24,13 @@ def setup(swan_api_key: str):
     )
     return swan_orchestrator
 
+
 def extend_task_duration(
         swan_orchestrator: Orchestrator, 
         private_key: str, 
         task_uuid: str, 
-        instance_type: str, 
-        duration:int=60
-    ) -> str:
+        duration:int=3600
+    ) -> TaskRenewalResult:
     """Extend an existing task with UUID.
 
     Args:
@@ -31,33 +40,36 @@ def extend_task_duration(
         duration: additional duration to for task extension.
 
     Return:
-        Payment Tx Hash.
+        TaskRenewalResult.
     """
-    result = swan_orchestrator.renew_payment(
+    result = swan_orchestrator.renew_task(
         task_uuid=task_uuid, 
         private_key=private_key, 
         duration=duration,
-        instance_type=instance_type
     )
     return result
 
+
 if __name__ == '__main__':
+    dotenv.load_dotenv()
     # Input task UUID
     task_uuid = '<uuid>'
-    # instance_type has to be same as the originals
-    instance_type = '<instance_type>'
 
-    swan_api_key = '<swan_api_key>'
-    wallet_address = '<wallet_address>'
-    private_key = '<private_key>'
+    swan_api_key = os.getenv("SWAN_API_KEY")
+    wallet_address = os.getenv("WALLET_ADDRESS")
+    private_key = os.getenv("PRIVATE_KEY")
+
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
     # Extend existing task
-    tx_hash = extend_task_duration(
+    renew_result = extend_task_duration(
         swan_orchestrator=swan_orchestrator, 
         private_key=private_key, 
-        task_uuid=task_uuid,
-        instance_type=instance_type
+        task_uuid=task_uuid
     )
-    print(f'Task renewed! Payment Tx Hash: \x1b[6;30;42m{tx_hash}\x1b[0m')
+    if renew_result:
+        logging.info(json.dumps(renew_result.to_dict(), indent=2, ensure_ascii=False))
+        logging.info(f'Task {task_uuid} renew request success.')
+    else:
+        logging.error(f'Task {task_uuid} renew request failed.')
