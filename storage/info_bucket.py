@@ -1,8 +1,8 @@
 import os
 from dotenv import load_dotenv
-from swan_mcs import APIClient, BucketAPI
+import swan
 
-def bucket_info(bucket_client: BucketAPI, bucket_names: list[str]) -> None:
+def bucket_info(bucket_client: swan.BucketAPI, bucket_names: list[str]) -> None:
     """Create however many buckets in the bucket_names list, get their information, then delete them.
 
     Args:
@@ -54,11 +54,9 @@ if __name__ == '__main__':
     load_dotenv("../.env")
 
     # create the bucket client
-    API_KEY = os.getenv("API_KEY")
-    CHAIN_NAME = os.getenv("CHAIN_NAME")
+    API_KEY = os.getenv("MCS_API_KEY")
     # set is_calibration=True if using the calibration MCS
-    mcs_api = APIClient(api_key=API_KEY, chain_name=CHAIN_NAME, is_calibration=True)
-    bucket_client = BucketAPI(mcs_api)
+    bucket_client = swan.resource(api_key=API_KEY, service_name='storage')
 
     bucket_names = ["my-test-bucket-1", "my-test-bucket-2"]
     bucket_info(bucket_client, bucket_names)
