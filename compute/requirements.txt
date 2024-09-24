@@ -1,0 +1,2 @@
+swan-sdk
+python-dotenv
