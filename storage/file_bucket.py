@@ -1,10 +1,10 @@
 import os
 from dotenv import load_dotenv
-from swan_mcs import APIClient, BucketAPI
+import swan
 
 
 
-def bucket_file(bucket_client: BucketAPI, bucket_name, object_name: str, file_path: str) -> None:
+def bucket_file(bucket_client: swan.BucketAPI, bucket_name, object_name: str, file_path: str) -> None:
     """Upload a file to a bucket, download the file, then delete the file
 
     Args:
@@ -68,11 +68,9 @@ if __name__ == '__main__':
     load_dotenv("../.env")
 
     # create the bucket client
-    API_KEY = os.getenv("API_KEY")
-    CHAIN_NAME = os.getenv("CHAIN_NAME")
+    API_KEY = os.getenv("MCS_API_KEY")
     # set is_calibration=True if using the calibration MCS
-    mcs_api = APIClient(API_KEY, CHAIN_NAME, is_calibration=True)
-    bucket_client = BucketAPI(mcs_api)
+    bucket_client = swan.resource(api_key=API_KEY, service_name='storage')
     
     # you can specify the folder path that the file will be uploaded to in the bucket
     # object name is the desired name of the file in the bucket

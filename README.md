@@ -29,6 +29,7 @@ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 WALLET_ADDRESS=<your_wallet_address>
 PRIVATE_KEY=<your_private_key>
 SWAN_API_KEY=<your_swanchain_api_key>
+MCS_API_KEY=<your_mcs_api_key>
 ```
 
 Make sure to replace the placeholders with your actual values.
