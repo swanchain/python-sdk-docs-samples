@@ -14,10 +14,11 @@ def setup(swan_api_key: str):
     """
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
-        api_key=swan_api_key, 
-        service_name='Orchestrator'
+        api_key='Z926BmQJyp', 
+        service_name='Orchestrator',
+        network='testnet'
     )
-    return wallet_address, private_key, swan_orchestrator
+    return swan_orchestrator
 
 def deploy_task(repo_uri: str, wallet_address: str, private_key: str, swan_orchestrator: Orchestrator) -> dict:
     """Deploy a task to Swan Chain.
@@ -52,7 +53,8 @@ def store_task_info_to_json(task_info: dict, directory: str, indent:int=2):
     """
     # Store json file 
     with open(directory, 'w') as file:
-        json.dump(task_info, file, indent=indent)
+        json.dumps(task_info, file, indent=indent)
+        
 
 def wait_for_deployment(swan_orchestrator: Orchestrator, task_uuid: str, max_wait_minute: int) -> list:
     """A function to wait until task are successfully deployed (Running).
@@ -79,9 +81,9 @@ if __name__ == '__main__':
     # Repo URI for deployment (A simple Hello World! Can be replaced with custom test repo.)
     repo_uri = 'https://github.com/swanchain/awesome-swanchain/tree/main/hello_world'
 
-    swan_api_key = '<swan_api_key>'
-    wallet_address = '<wallet_address>'
-    private_key = '<private_key>'
+    swan_api_key = "44HgVIr7ka"
+    wallet_address = "0xCA8609D14f48E59323702d1c945dBb145a87D27D"
+    private_key = "3b7a2af605e336ffa60891a387c2fabad4f1900a88993f150dac933dd66f5f99"
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
@@ -92,15 +94,15 @@ if __name__ == '__main__':
         private_key=private_key, 
         swan_orchestrator=swan_orchestrator
     )
-    print(f'Task Created, UUID: \x1b[6;30;42m{result['data']['task']['uuid']}\x1b[0m')
+    #print(f'Task Created, UUID: \x1b[6;30;42m{result['data']['task']['uuid']}\x1b[0m')
 
     # Save task information for future use
-    store_task_info_to_json(task_info=result['data']['task'], directory='./task_info.json')
+    #store_task_info_to_json(task_info=result['data']['task'], directory='./task_info.json')
 
     # Wait for deployment
     wait_minutes = 5
     wait_for_deployment(
         swan_orchestrator=swan_orchestrator, 
-        task_uuid=result['data']['task']['uuid'], 
+        task_uuid=result['uuid'], 
         max_wait_minute=wait_minutes
     )

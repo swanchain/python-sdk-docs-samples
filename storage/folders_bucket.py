@@ -1,9 +1,9 @@
 import os
 from dotenv import load_dotenv
-from swan_mcs import APIClient, BucketAPI
 
+import swan
 
-def bucket_folders(bucket_client: BucketAPI, bucket_name: str) -> None:
+def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
     """Create the different types of folders
 
     Args:
@@ -29,7 +29,7 @@ def bucket_folders(bucket_client: BucketAPI, bucket_name: str) -> None:
     # create a folder
     # If you want to place the folder directly in the root directory, you can leave the prefix field empty
     folder_name = "my-test-folder"
-    create_folder_status = bucket_client.create_folder(bucket_name, folder_name, prefix='my-test-prefix')
+    create_folder_status = bucket_client.create_folder(bucket_name, folder_name)
     if not create_folder_status:
         print(f"Failed to create folder: {folder_name}")
 
@@ -40,15 +40,16 @@ def bucket_folders(bucket_client: BucketAPI, bucket_name: str) -> None:
     mcs_folder_upload_status = bucket_client.upload_folder(bucket_name, object_name, mcs_folder_path)
     print("MCS folder file information:")
     for file_info in mcs_folder_upload_status:
-        print(file_info.to_json())
+        #print(file_info.to_json())
+        pass
 
 
     # upload an IPFS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
     object_name = "my-ipfs-test-object"
     ipfs_folder_path = "my-ipfs-test-folder"
-    ipfs_folder_upload_info= bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
+    ipfs_folder_upload_info = bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
     print("IPFS folder information:")
-    print(ipfs_folder_upload_info.to_json())
+    #print(ipfs_folder_upload_info.to_json())
 
     # delete the bucket
     bucket_delete_success = bucket_client.delete_bucket(bucket_name)
@@ -60,14 +61,12 @@ def bucket_folders(bucket_client: BucketAPI, bucket_name: str) -> None:
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv("../.env")
+    load_dotenv()
 
-    # create the bucket client
-    API_KEY = os.getenv("API_KEY")
-    CHAIN_NAME = os.getenv("CHAIN_NAME")
-    # set is_calibration=True if using the calibration MCS
-    mcs_api = APIClient(API_KEY, CHAIN_NAME, is_calibration=True)
-    bucket_client = BucketAPI(mcs_api)
+    # get the api key
+    api_key = os.getenv('MCS_API_KEY')
+
+    bucket_client = swan.resource(api_key=api_key, service_name='storage', is_calibration=True)
 
     bucket_name = "my-test-bucket"
     bucket_folders(bucket_client, bucket_name)

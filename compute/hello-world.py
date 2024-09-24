@@ -9,15 +9,16 @@ import aiohttp
 class HelloWorld:
     def __init__(self):
         self.orchestrator = swan.resource(
-            api_key=os.getenv("SWAN_API_KEY"), 
-            service_name='Orchestrator'
+            api_key="Z926BmQJyp", 
+            service_name='Orchestrator',
+            network='testnet'
         )
             
     def deploy(self):
         result = self.orchestrator.create_task(
             repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/hello_world',
-            wallet_address=os.getenv("WALLET_ADDRESS"),
-            private_key=os.getenv("PRIVATE_KEY"),
+            wallet_address="0xCA8609D14f48E59323702d1c945dBb145a87D27D",
+            private_key="3b7a2af605e336ffa60891a387c2fabad4f1900a88993f150dac933dd66f5f99",
             instance_type='C1ae.small',
             auto_pay=True
         )

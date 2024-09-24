@@ -1,5 +1,6 @@
 import swan
 from swan import Orchestrator
+import swan
 
 def setup(swan_api_key: str):
     """Setup required informations for task deployment.
@@ -10,10 +11,11 @@ def setup(swan_api_key: str):
     """
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
-        api_key=swan_api_key, 
-        service_name='Orchestrator'
+        api_key="Z926BmQJyp", 
+        service_name='Orchestrator',
+        network='testnet'
     )
-    return wallet_address, private_key, swan_orchestrator
+    return swan_orchestrator
 
 def extend_task_duration(
         swan_orchestrator: Orchestrator, 
@@ -43,13 +45,13 @@ def extend_task_duration(
 
 if __name__ == '__main__':
     # Input task UUID
-    task_uuid = '<uuid>'
+    task_uuid = '78ae584a-712d-4cb9-8e59-34f7ca23724d'
     # instance_type has to be same as the originals
-    instance_type = '<instance_type>'
+    instance_type = 'C1ae.small'
 
-    swan_api_key = '<swan_api_key>'
-    wallet_address = '<wallet_address>'
-    private_key = '<private_key>'
+    swan_api_key = "Z926BmQJyp"
+    wallet_address = "0xCA8609D14f48E59323702d1c945dBb145a87D27D"
+    private_key = "3b7a2af605e336ffa60891a387c2fabad4f1900a88993f150dac933dd66f5f99"
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 

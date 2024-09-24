@@ -13,7 +13,8 @@ def setup(swan_api_key: str):
     # Connect to Orchestrator
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        service_name='Orchestrator'
+        service_name='Orchestrator',
+        network='testnet'
     )
     return swan_orchestrator
 
@@ -34,13 +35,13 @@ def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
 
 if __name__ == '__main__':
     # Input task UUID
-    task_uuid = '<task_uuid>'
+    task_uuid = '78ae584a-712d-4cb9-8e59-34f7ca23724d'
 
-    swan_api_key = '<swan_api_key>'
+    swan_api_key = "Z926BmQJyp"
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
 
     # Terminate existing task
     result = terminate_existing_task(swan_orchestrator=swan_orchestrator, task_uuid=task_uuid)
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    print(result)

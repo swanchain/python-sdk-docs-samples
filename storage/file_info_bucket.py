@@ -1,10 +1,11 @@
 import os
 from dotenv import load_dotenv
-from swan_mcs import APIClient, BucketAPI
+
+import swan
 
 
 
-def bucket_file_info(bucket_client: BucketAPI, bucket_name, object_name: str, file_path: str) -> None:
+def bucket_file_info(bucket_client: swan.BucketAPI, bucket_name, object_name: str, file_path: str) -> None:
     """Upload files to a bucket and get info of the files
 
     Args:
@@ -75,14 +76,12 @@ def bucket_file_info(bucket_client: BucketAPI, bucket_name, object_name: str, fi
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv("../.env")
+    load_dotenv()
 
-    # create the bucket client
-    API_KEY = os.getenv("API_KEY")
-    CHAIN_NAME = os.getenv("CHAIN_NAME")
-    # set is_calibration=True if using the calibration MCS
-    mcs_api = APIClient(API_KEY, CHAIN_NAME, is_calibration=True)
-    bucket_client = BucketAPI(mcs_api)
+    # get the api key
+    api_key = os.getenv('MCS_API_KEY')
+
+    bucket_client = swan.resource(api_key=api_key, service_name='storage', is_calibration=True)
     
     # you can spicifiy the folder path that the file fill be uploaded to in the bucket
     object_name = "my-test-file"
