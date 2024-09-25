@@ -10,7 +10,7 @@ import swan
 from swan import Orchestrator
 from swan.object import TaskCreationResult, TaskDeploymentInfo
 
-class HelloWorld:
+class Example:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
@@ -19,10 +19,10 @@ class HelloWorld:
             
     def deploy(self):
         result: TaskCreationResult = self.orchestrator.create_task(
-            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/ChainNode',
+            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/Llama3-8B-LLM-Chat',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='C1ae.small'
+            instance_type='C1ae.medium'
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
@@ -85,6 +85,6 @@ class HelloWorld:
 if __name__ == "__main__":
     dotenv.load_dotenv()
 
-    hello_world = HelloWorld()
+    hello_world = Example()
     hello_world.deploy()
     hello_world.wait_for_running()
