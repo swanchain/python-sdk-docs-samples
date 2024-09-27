@@ -36,8 +36,8 @@ $ pip install -r requirements.txt
 
 ### Store Your Environment Variables Securely 
 
-- public address will be required for authorization on Swan Orchestrator. \
-- private address will be required for signing onchain transactions. \
+- public address will be required for authorization on Swan Orchestrator. 
+- private address will be required for signing onchain transactions. 
 - API key will be required for using Swan Orchestrator APIs.
 
 ```txt
