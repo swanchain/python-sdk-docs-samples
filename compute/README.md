@@ -1,7 +1,24 @@
 [![PyPI version](https://img.shields.io/pypi/v/swan-sdk)](https://pypi.org/project/swan-sdk/)
-# Swan SDK Orchestrator Task Samples
+# Swan SDK Orchestrator Task Samples <!-- omit in toc -->
 
 This directory contains samples for Swan Orchestrator. Swan Orchestrator is the Web3 cloud computing solution for tasks creation, deployment and management. User can create and manage tasks through samples under this directory. For more information checkout [Swan Developer Docs](https://docs.swanchain.io/).
+
+- [Setup](#setup)
+  - [Authentication (API Key)](#authentication-api-key)
+  - [Install Dependencies](#install-dependencies)
+  - [Store Your Environment Variables Securely](#store-your-environment-variables-securely)
+- [Run Samples](#run-samples)
+  - [Get Instance Resources](#get-instance-resources)
+  - [Instance Configuration Example](#instance-configuration-example)
+  - [Connect to Orchestrator (with Swan API Key)](#connect-to-orchestrator-with-swan-api-key)
+  - [Create Task](#create-task)
+  - [Renew Task / Extend Task Duration](#renew-task--extend-task-duration)
+  - [Terminate Task](#terminate-task)
+  - [Get Task List](#get-task-list)
+  - [Get Task Deployment Info](#get-task-deployment-info)
+  - [Pre-approve Payment](#pre-approve-payment)
+  - [Other Examples](#other-examples)
+
 
 ## Setup
 

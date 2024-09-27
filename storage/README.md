@@ -1,7 +1,19 @@
 [![PyPI version](https://img.shields.io/pypi/v/python-mcs-sdk)](https://pypi.org/project/python-mcs-sdk/)
-# Swan MultiChain Storage SDK Samples
+# Swan MultiChain Storage SDK Samples <!-- omit in toc -->
 
 This directory contains samples for Swan MultiChain Storage System. Swan MultiChain Storage is the Web3 cloud computing solution for storage bucket creation, deployment and management. User can create and manage buckets through samples under this directory. For more information checkout [Swan MCS Developer Docs](https://docs.swanchain.io/bulders/tools/multi-chain-storage).
+
+- [Setup](#setup)
+  - [Authentication (API Key)](#authentication-api-key)
+  - [Install Dependencies](#install-dependencies)
+  - [Store API Key in .env](#store-api-key-in-env)
+- [Run Samples](#run-samples)
+  - [Create and Delete a Bucket](#create-and-delete-a-bucket)
+  - [Get Bucket information](#get-bucket-information)
+  - [Create and Upload Folders to a Bucket](#create-and-upload-folders-to-a-bucket)
+  - [Upload, Download, and Delete a file in a Bucket](#upload-download-and-delete-a-file-in-a-bucket)
+  - [Get info of files in a Bucket](#get-info-of-files-in-a-bucket)
+
 
 ## Setup
 

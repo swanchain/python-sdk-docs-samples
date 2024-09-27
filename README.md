@@ -1,7 +1,12 @@
 [![PyPI version](https://img.shields.io/pypi/v/swan-sdk)](https://pypi.org/project/swan-sdk/)
-# Python SDK Docs Samples
+# Python SDK Docs Samples <!-- omit in toc -->
 
 Python samples for the [Swan SDK](https://github.com/swanchain/python-swan-sdk)
+
+- [Setup](#setup)
+- [How to run a sample](#how-to-run-a-sample)
+- [References](#references)
+
 
 ## Setup
 
