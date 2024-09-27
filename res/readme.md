@@ -1,0 +1,1 @@
+This folder holds some resource files for the purpose of running storage examples.

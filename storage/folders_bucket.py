@@ -36,7 +36,7 @@ def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
 
     # upload a MCS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
     object_name = "my-mcs-test-object"
-    mcs_folder_path = "my-mcs-test-folder"
+    mcs_folder_path = "res/my-mcs-test-folder"
     mcs_folder_upload_status = bucket_client.upload_folder(bucket_name, object_name, mcs_folder_path)
     print("MCS folder file information:")
     for file_info in mcs_folder_upload_status:
@@ -45,7 +45,7 @@ def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
 
     # upload an IPFS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
     object_name = "my-ipfs-test-object"
-    ipfs_folder_path = "my-ipfs-test-folder"
+    ipfs_folder_path = "res/my-ipfs-test-folder"
     ipfs_folder_upload_info= bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
     print("IPFS folder information:")
     print(ipfs_folder_upload_info.to_json())
@@ -60,7 +60,7 @@ def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv("../.env")
+    load_dotenv()
 
     # create the bucket client
     API_KEY = os.getenv("MCS_API_KEY")

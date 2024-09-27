@@ -65,7 +65,7 @@ def bucket_file(bucket_client: swan.BucketAPI, bucket_name, object_name: str, fi
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv("../.env")
+    load_dotenv()
 
     # create the bucket client
     API_KEY = os.getenv("MCS_API_KEY")
@@ -75,6 +75,6 @@ if __name__ == '__main__':
     # you can specify the folder path that the file will be uploaded to in the bucket
     # object name is the desired name of the file in the bucket
     object_name = "my-test-file"
-    file_path = "logo_mcs.png"
+    file_path = "res/logo_mcs.png"
     bucket_name = "my-test-bucket"
     bucket_file(bucket_client, bucket_name, object_name, file_path)

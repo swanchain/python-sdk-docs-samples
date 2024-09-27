@@ -60,7 +60,7 @@ def bucket_file_info(bucket_client: swan.BucketAPI, bucket_name, object_name: st
 
     file_delete_status_2 = bucket_client.delete_file(bucket_name, object_name+"2")
     if not file_delete_status_2:
-        print(f"Error deleting file: {object_name+"2"}")
+        print(f"Error deleting file: {object_name+'2'}")
 
 
     # delete the bucket
@@ -74,7 +74,7 @@ def bucket_file_info(bucket_client: swan.BucketAPI, bucket_name, object_name: st
 
 if __name__ == '__main__':
     # load environment variables
-    load_dotenv("../.env")
+    load_dotenv()
 
     # create the bucket client
     API_KEY = os.getenv("MCS_API_KEY")
@@ -83,6 +83,6 @@ if __name__ == '__main__':
     
     # you can spicifiy the folder path that the file fill be uploaded to in the bucket
     object_name = "my-test-file"
-    file_path = "logo_mcs.png"
+    file_path = "res/logo_mcs.png"
     bucket_name = "my-test-bucket"
     bucket_file_info(bucket_client, bucket_name, object_name, file_path)
