@@ -21,6 +21,16 @@ This directory contains samples for Swan MultiChain Storage System. Swan MultiCh
 
 To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: visit [MultiChain Storage](https://www.multichain.storage/home).
 
+This sample (and Swan SDK) requires you to have API Key from MCS.
+
+Steps to get a MCS API Key:
+
+- Go to [Multi Chain Storage](https://www.multichain.storage/home). Make sure you're under the Mainnet environment.
+- Login through MetaMask.
+- Click the gear icon on the top right and select 'Setting'.
+- Click 'Create API Key'
+- Store your API Key safely, do not share with others.
+
 
 ### Install Dependencies
 1. Clone the python-sdk-docs-samples.
