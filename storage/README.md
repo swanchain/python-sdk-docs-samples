@@ -12,7 +12,7 @@ The following is a template since I am unable to get the api key myself, someone
 This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
 Steps to get an API Key:
-I cannot access or login to MCS so I cannot get the correct steps
+I cannot access or login to MCS so I cannot get the correct steps https://www.multichain.storage/home
 
 - Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
@@ -105,6 +105,6 @@ $ python storage/file_bucket.py
 ### Get info of files in a Bucket
 Retrieve information on a particular file or all files in a Bucket.
 ```bash
-$ python compute/file_info_bucket.py
+$ python storage/file_info_bucket.py
 ```
 
