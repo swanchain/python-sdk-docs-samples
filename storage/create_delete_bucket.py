@@ -1,4 +1,5 @@
 import os
+import logging
 from dotenv import load_dotenv
 import swan
 
@@ -23,20 +24,20 @@ def bucket_create_delete(bucket_client: swan.BucketAPI, bucket_name: str) -> Non
     
     # print error if the bucket can not be created
     if not bucket_create_success:
-        print(f"Error creating bucket: {bucket_name}")
+        logging.error(f"Error creating bucket: {bucket_name}")
         return
 
-    print(f"Created bucket: {bucket_name}")
+    logging.info(f"Created bucket: {bucket_name}")
 
     # delete the bucket
     bucket_delete_success = bucket_client.delete_bucket(bucket_name)
 
     # print error if the bucket could not be deleted
     if not bucket_delete_success:
-        print(f"Error deleting bucket: {bucket_name}")
+        logging.error(f"Error deleting bucket: {bucket_name}")
         return
     
-    print(f"Deleted bucket: {bucket_name}")
+    logging.info(f"Deleted bucket: {bucket_name}")
 
 
 if __name__ == '__main__':

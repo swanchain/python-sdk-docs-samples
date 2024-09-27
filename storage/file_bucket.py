@@ -1,4 +1,5 @@
 import os
+import logging
 from dotenv import load_dotenv
 import swan
 
@@ -30,27 +31,27 @@ def bucket_file(bucket_client: swan.BucketAPI, bucket_name, object_name: str, fi
 
     # return if the bucket can not be created
     if not bucket_create_success:
-        print(f"Error creating bucket: {bucket_name}")
+        logging.error(f"Error creating bucket: {bucket_name}")
         return
 
 
     # upload the file to the bucket
     # replace=True will overwrite an existing file of the same name
     file_upload_status = bucket_client.upload_file(bucket_name, object_name, file_path, replace=True)
-    print(file_upload_status.to_json())
+    logging.info(file_upload_status.to_json())
 
 
     # download the file
     local_object_name= "my-downloaded-file"
     file_download_status = bucket_client.download_file(bucket_name, object_name, local_object_name)
     if not file_download_status:
-        print(f"Error downloading file: {object_name}")
+        logging.error(f"Error downloading file: {object_name}")
 
 
     # delete the file
     file_delete_status = bucket_client.delete_file(bucket_name, object_name)
     if not file_delete_status:
-        print(f"Error deleting file: {object_name}")
+        logging.info(f"Error deleting file: {object_name}")
 
 
     # delete the bucket
@@ -58,7 +59,7 @@ def bucket_file(bucket_client: swan.BucketAPI, bucket_name, object_name: str, fi
 
     # print error if the bucket could not be deleted
     if not bucket_delete_success:
-        print(f"Error deleting bucket:{bucket_name}")
+        logging.info(f"Error deleting bucket:{bucket_name}")
 
 
 
