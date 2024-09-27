@@ -23,7 +23,7 @@ To use `swan-sdk`, an Orchestrator API key is required.
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'
 
-To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: go to [MultiChain Storage](https://www.multichain.storage/home).
+To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: visit [MultiChain Storage](https://www.multichain.storage/home).
 
 4. Set up environment variables
    Create a `.env` file in the root directory and add the following environment variables:

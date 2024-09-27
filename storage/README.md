@@ -7,7 +7,7 @@ This directory contains samples for Swan MultiChain Storage System. Swan MultiCh
 
 ### Authentication (API Key)
 
-To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: go to [MultiChain Storage](https://www.multichain.storage/home).
+To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: visit [MultiChain Storage](https://www.multichain.storage/home).
 
 
 ### Install Dependencies
