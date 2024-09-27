@@ -15,14 +15,15 @@ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 ```
 
 3. Obtain authentication credentials.
-   To use `swan-sdk`, an Orchestrator API key is required.
+
+To use `swan-sdk`, an Orchestrator API key is required.
 
 - Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'
 
-Add steps to get credentials for MCS, I cannot get these steps myself
+To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: go to [MultiChain Storage](https://www.multichain.storage/home).
 
 4. Set up environment variables
    Create a `.env` file in the root directory and add the following environment variables:
@@ -46,7 +47,7 @@ python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
 ```
 
-3. Install the dependencies:
+2. Install the dependencies:
 
 ```bash
 pip install -r requirements.txt
@@ -56,6 +57,7 @@ pip install -r requirements.txt
 
 ```bash
 python compute/<sample_name>.py
+python storage/<sample_name>.py
 ```
 
 ## References

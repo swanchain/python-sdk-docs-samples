@@ -1,26 +1,14 @@
 [![PyPI version](https://img.shields.io/pypi/v/python-mcs-sdk)](https://pypi.org/project/python-mcs-sdk/)
 # Swan MultiChain Storage SDK Samples
 
-This directory contains samples for Swan MultiChain Storage System. Swan MultiChain Storage is the Web3 cloud computing solution for storage bucket creation, deployment and management. User can create and manage buckets through samples under this directory. For more information checkout [Swan MCS Developer Docs](https://docs.filswan.com/).
+This directory contains samples for Swan MultiChain Storage System. Swan MultiChain Storage is the Web3 cloud computing solution for storage bucket creation, deployment and management. User can create and manage buckets through samples under this directory. For more information checkout [Swan MCS Developer Docs](https://docs.swanchain.io/bulders/tools/multi-chain-storage).
 
 ## Setup
 
 ### Authentication (API Key)
 
-The following is a template since I am unable to get the api key myself, someone with access to the MCS service please change these steps.
+To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required. To get an MCS API Key: go to [MultiChain Storage](https://www.multichain.storage/home).
 
-This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
-
-Steps to get an Orchestrator API Key:
-
-- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
-- Login through MetaMask.
-- Click the user icon on the top right.
-- Click 'Show API-Key' -> 'New API Key'
-- Store your API Key safely, do not share with others.
-
-Steps to get a Storage API Key:
-- Go to [MCS](https://www.multichain.storage/home)
 
 ### Install Dependencies
 1. Clone the python-sdk-docs-samples.
@@ -40,36 +28,14 @@ $ source venv/bin/activate
 $ pip install -r requirements.txt
 ```
 
-### Store Your Environment Variables Securely 
-Python-dotenv is recommended to be used to store environment variables safely. (Contained within requirements.txt)
-1. Install python-dotenv (if you have not)
-```bash
-$ pip install python-dotenv
-```
-or
-```bash
-$ pip install -r requirements.txt
-```
-2. Create a new .env file
-```bash
-$ sudo vim .env
-```
-3. Store your personal information 
+### Store API Key in .env
 
-    MCS API key will be required for using Swan Storage APIs.
+1. Create a new .env file
+2. Store your MCS API key in .env file:
 ```txt
 MCS_API_KEY = <your_storage_api_key>
 ```
-4. Load your personal information (Optional)
-We recommand storing personal information as environment variables for safety.
-```python
-from dotenv import load_dotenv
-load_dotenv()
 
-import os
-
-API_KEY = os.get("MCS_API_KEY")
-```
 
 ## Run Samples
 
