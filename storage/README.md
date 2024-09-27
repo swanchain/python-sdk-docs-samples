@@ -11,8 +11,7 @@ The following is a template since I am unable to get the api key myself, someone
 
 This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
-Steps to get an API Key:
-I cannot access or login to MCS so I cannot get the correct steps https://www.multichain.storage/home
+Steps to get an Orchestrator API Key:
 
 - Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
@@ -20,17 +19,16 @@ I cannot access or login to MCS so I cannot get the correct steps https://www.mu
 - Click 'Show API-Key' -> 'New API Key'
 - Store your API Key safely, do not share with others.
 
-The steps below are all good
+Steps to get a Storage API Key:
+- Go to [MCS](https://www.multichain.storage/home)
 
 ### Install Dependencies
-1. Clone the python-sdk-docs-samples  and change directory to the directory you want to use.
+1. Clone the python-sdk-docs-samples.
+
 ```bash
 $ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 ```
-and
-```bash
-$ cd mcs
-```
+
 2. Install and updgrade pip and virtualenv if you do not already have them.
 3. Create virtualenv compatible with Python 3.7+
 ```bash
@@ -56,13 +54,11 @@ $ pip install -r requirements.txt
 ```bash
 $ sudo vim .env
 ```
-3. Store your personal information
-public address will be required for authorization on Swan Orchestrator. \
-private address will be required for signing onchain transactions. \
-API key will be required for using Swan Orchestrator APIs.
+3. Store your personal information 
+
+    MCS API key will be required for using Swan Storage APIs.
 ```txt
-API_KEY = <your_api_key>
-CHAIN_NAME = <chain_name>
+MCS_API_KEY = <your_storage_api_key>
 ```
 4. Load your personal information (Optional)
 We recommand storing personal information as environment variables for safety.
@@ -72,8 +68,7 @@ load_dotenv()
 
 import os
 
-API_KEY = os.get("API_KEY")
-CHAIN_NAME = os.get("CHAIN_NAME")
+API_KEY = os.get("MCS_API_KEY")
 ```
 
 ## Run Samples
