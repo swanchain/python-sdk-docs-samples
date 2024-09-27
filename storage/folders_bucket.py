@@ -1,4 +1,5 @@
 import os
+import logging
 from dotenv import load_dotenv
 import swan
 
@@ -23,7 +24,7 @@ def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
 
     # return if the bucket can not be created
     if not bucket_create_success:
-        print(f"Error creating bucket: {bucket_name}")
+        logging.error(f"Error creating bucket: {bucket_name}")
         return
 
     # create a folder
@@ -31,31 +32,31 @@ def bucket_folders(bucket_client: swan.BucketAPI, bucket_name: str) -> None:
     folder_name = "my-test-folder"
     create_folder_status = bucket_client.create_folder(bucket_name, folder_name, prefix='my-test-prefix')
     if not create_folder_status:
-        print(f"Failed to create folder: {folder_name}")
+        logging.error(f"Failed to create folder: {folder_name}")
 
 
     # upload a MCS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
     object_name = "my-mcs-test-object"
     mcs_folder_path = "res/my-mcs-test-folder"
     mcs_folder_upload_status = bucket_client.upload_folder(bucket_name, object_name, mcs_folder_path)
-    print("MCS folder file information:")
+    logging.info("MCS folder file information:")
     for file_info in mcs_folder_upload_status:
-        print(file_info.to_json())
+        logging.info(file_info.to_json())
 
 
     # upload an IPFS folder under bucket_name/object_name and print the info of the files in the folder that were uploaded
     object_name = "my-ipfs-test-object"
     ipfs_folder_path = "res/my-ipfs-test-folder"
     ipfs_folder_upload_info= bucket_client.upload_ipfs_folder(bucket_name, object_name, ipfs_folder_path)
-    print("IPFS folder information:")
-    print(ipfs_folder_upload_info.to_json())
+    logging.info("IPFS folder information:")
+    logging.info(ipfs_folder_upload_info.to_json())
 
     # delete the bucket
     bucket_delete_success = bucket_client.delete_bucket(bucket_name)
 
     # print error if the bucket could not be deleted
     if not bucket_delete_success:
-        print(f"Error deleting bucket: {bucket_name}")
+        logging.error(f"Error deleting bucket: {bucket_name}")
 
 
 if __name__ == '__main__':

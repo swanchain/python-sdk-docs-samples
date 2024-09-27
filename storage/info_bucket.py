@@ -1,4 +1,5 @@
 import os
+import logging
 from dotenv import load_dotenv
 import swan
 
@@ -23,7 +24,7 @@ def bucket_info(bucket_client: swan.BucketAPI, bucket_names: list[str]) -> None:
     # Determine which bucket could not be created
     for bucket_create_status in bucket_create_statuses:
         if not bucket_create_status[1]:
-            print(f"Error creating bucket: {bucket_create_status[0]}")
+            logging.error(f"Error creating bucket: {bucket_create_status[0]}")
 
     # get the buckets that were created
     created_buckets = [bucket_create_status[0] for bucket_create_status in bucket_create_statuses if bucket_create_status[1]]
@@ -33,11 +34,11 @@ def bucket_info(bucket_client: swan.BucketAPI, bucket_names: list[str]) -> None:
         return
 
     # get the info of the first created bucket
-    print(bucket_client.get_bucket(created_buckets[0]).to_json())
+    logging.info(bucket_client.get_bucket(created_buckets[0]).to_json())
 
     # get the info of all the buckets
     for bucket in bucket_client.list_buckets():
-        print(bucket.to_json())
+        logging.info(bucket.to_json())
 
     # delete the buckets
     bucket_delete_statuses = [(bucket_name, bucket_client.delete_bucket(bucket_name)) for bucket_name in created_buckets]
@@ -45,7 +46,7 @@ def bucket_info(bucket_client: swan.BucketAPI, bucket_names: list[str]) -> None:
     # Determine which bucket could not be deleted
     for bucket_delete_status in bucket_delete_statuses:
         if not bucket_create_status[1]:
-            print(f"Error deleting bucket: {bucket_create_status[0]}")
+            logging.error(f"Error deleting bucket: {bucket_create_status[0]}")
 
 
 
