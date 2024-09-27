@@ -1,2 +1,0 @@
-python-MCS-SDK
-python-dotenv
