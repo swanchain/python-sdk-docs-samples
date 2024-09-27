@@ -22,6 +22,8 @@ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 - Click the user icon on the top right.
 - Click 'Show API-Key' -> 'New API Key'
 
+Add steps to get credentials for MCS, I cannot get these steps myself
+
 4. Set up environment variables
    Create a `.env` file in the root directory and add the following environment variables:
 
@@ -54,38 +56,6 @@ pip install -r requirements.txt
 
 ```bash
 python compute/<sample_name>.py
-```
-
-## Storage Samples Information
-
-### Create and Delete a Bucket
-Create and delete a bucket.
-```bash
-$ python mcs/create_delete_bucket.py
-```
-
-### Get Bucket information
-Retrieve information for a single bucket but also for all buckets.
-```bash
-$ python mcs/info_bucket.py
-```
-
-### Create and Upload Folders to a Bucket
-Detailed breakdown of how to create folders and upload MCS and IPFS folders.
-```bash
-$ python mcs/folders_bucket.py
-```
-
-### Upload, Download, and Delete a file in a Bucket
-Detailed breakdown of how to upload, download, and delete a file in a Bucket.
-```bash
-$ python mcs/file_bucket.py
-```
-
-### Get info of files in a Bucket
-Retrieve information on a particular file or all files in a Bucket.
-```bash
-$ python compute/create_task.py
 ```
 
 ## References

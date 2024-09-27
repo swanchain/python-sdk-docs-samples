@@ -12,6 +12,7 @@ The following is a template since I am unable to get the api key myself, someone
 This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
 Steps to get an API Key:
+I cannot access or login to MCS so I cannot get the correct steps
 
 - Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
@@ -80,30 +81,30 @@ CHAIN_NAME = os.get("CHAIN_NAME")
 ### Create and Delete a Bucket
 Create and delete a bucket.
 ```bash
-$ python mcs/create_delete_bucket.py
+$ python storage/create_delete_bucket.py
 ```
 
 ### Get Bucket information
 Retrieve information for a single bucket but also for all buckets.
 ```bash
-$ python mcs/info_bucket.py
+$ python storage/info_bucket.py
 ```
 
 ### Create and Upload Folders to a Bucket
 Detailed breakdown of how to create folders and upload MCS and IPFS folders.
 ```bash
-$ python mcs/folders_bucket.py
+$ python storage/folders_bucket.py
 ```
 
 ### Upload, Download, and Delete a file in a Bucket
 Detailed breakdown of how to upload, download, and delete a file in a Bucket.
 ```bash
-$ python mcs/file_bucket.py
+$ python storage/file_bucket.py
 ```
 
 ### Get info of files in a Bucket
 Retrieve information on a particular file or all files in a Bucket.
 ```bash
-$ python compute/create_task.py
+$ python compute/file_info_bucket.py
 ```
 
