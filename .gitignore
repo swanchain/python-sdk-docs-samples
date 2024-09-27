@@ -163,3 +163,4 @@ cython_debug/
 #.idea/
 
 my-downloaded-file
+task_*.json

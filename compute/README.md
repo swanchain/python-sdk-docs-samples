@@ -147,7 +147,7 @@ $ python compute/payment_approve.py
 These examples shows how to deploy specific applications.
 
 ```bash
-$ python compute/hello-world.py         # a hello world app
+$ python compute/hello-world.py         # hello world app
 $ python compute/deploy-chainnode.py    # chainnode app
 $ python compute/deploy-llama3-model.py # llama3 model app
 ```
