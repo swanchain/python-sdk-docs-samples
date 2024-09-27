@@ -72,7 +72,7 @@ class Example:
                     async with session.get(url) as resp:
                         if resp.status == 200:
                             logging.info(f"\x1b[32mApp is running at\x1b[0m \x1b[6;30;42m{url}\x1b[0m")
-                            logging.info(f"Response: {await resp.text()}")
+                            # logging.info(f"Response: {await resp.text()}")
                             break
                         await asyncio.sleep(5)
                 else:

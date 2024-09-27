@@ -53,7 +53,7 @@ def extend_task_duration(
 if __name__ == '__main__':
     dotenv.load_dotenv()
     # Input task UUID
-    task_uuid = '<uuid>'
+    task_uuid = '<task_uuid>'
 
     swan_api_key = os.getenv("SWAN_API_KEY")
     wallet_address = os.getenv("WALLET_ADDRESS")
