@@ -3,6 +3,7 @@ import os
 import dotenv
 import logging
 import swan
+import sys
 from swan import Orchestrator
 from swan.object import TaskDeploymentInfo
 
@@ -30,5 +31,11 @@ if __name__ == "__main__":
     # Load environment variables from the .env file
     dotenv.load_dotenv()
     # task_uuid = '5f9d2925-bf55-4cb3-b829-20935b011ce1'
-    task_uuid = '<TASK_UUID>'
+    
+    if len(sys.argv) != 2:
+        logging.error("Usage: python get_task_deployment_info.py <task_uuid>")
+        sys.exit(1)
+
+    task_uuid = sys.argv[1]
+
     get_task_info(task_uuid)

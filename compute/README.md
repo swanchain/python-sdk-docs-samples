@@ -102,20 +102,16 @@ $ python compute/create_task.py
 
 This example shows how to extend a task's duration.
 
-Edit `task_uuid = '<task_uuid>'` in `compute/renew_task.py` to input the task_uuid you just created, and then run:
-
 ```bash
-$ python compute/renew_task.py 
+$ python compute/renew_task.py '<task_uuid>'
 ```
 
 ### Terminate Task
 
 This example shows how to early terminate a task.
 
-Edit `task_uuid = '<task_uuid>'` in `compute/terminate_task.py` to input the task_uuid which is in its duration, and then run:
-
 ```bash
-$ python compute/terminate_task.py
+$ python compute/terminate_task.py '<task_uuid>'
 ```
 
 ### Get Task List
@@ -131,7 +127,7 @@ $ python compute/get_task_list.py
 This example shows how to get the task deployment info.
 
 ```bash
-$ python compute/get_task_deployment_info.py
+$ python compute/get_task_deployment_info.py '<task_uuid>'
 ```
 
 ### Pre-approve Payment

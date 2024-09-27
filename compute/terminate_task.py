@@ -2,6 +2,7 @@ import os
 import dotenv
 import json
 import logging
+import sys
 
 import swan
 from swan import Orchestrator
@@ -40,8 +41,13 @@ def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
 
 if __name__ == '__main__':
     dotenv.load_dotenv()
-    # Input task UUID
-    task_uuid = '<task_uuid>'
+
+    if len(sys.argv) != 2:
+        logging.error("Usage: python terminate_task.py <task_uuid>")
+        sys.exit(1)
+
+    task_uuid = sys.argv[1]
+
 
     swan_api_key = os.getenv("SWAN_API_KEY")
     # Connect to Orchestrator

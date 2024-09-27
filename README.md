@@ -65,5 +65,9 @@ python compute/<sample_name>.py
 python storage/<sample_name>.py
 ```
 
+- for `compute` example details, checkout the [document](compute/README.md)
+- for `storage` example details, checkout the [document](storage/README.md)
+
+
 ## References
 https://github.com/GoogleCloudPlatform/python-docs-samples
