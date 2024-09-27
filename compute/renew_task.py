@@ -2,6 +2,7 @@ import os
 import dotenv
 import logging
 import json
+import sys
 
 import swan
 from swan import Orchestrator
@@ -53,8 +54,12 @@ def extend_task_duration(
 
 if __name__ == '__main__':
     dotenv.load_dotenv()
-    # Input task UUID
-    task_uuid = '<task_uuid>'
+
+    if len(sys.argv) != 2:
+        logging.error("Usage: python renew_task.py <task_uuid>")
+        sys.exit(1)
+
+    task_uuid = sys.argv[1]
 
     swan_api_key = os.getenv("SWAN_API_KEY")
     wallet_address = os.getenv("WALLET_ADDRESS")
