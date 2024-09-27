@@ -14,7 +14,8 @@ class Example:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
-            service_name='Orchestrator'
+            service_name='Orchestrator',
+            network='testnet'
         )
             
     def deploy(self):

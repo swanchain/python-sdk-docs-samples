@@ -15,6 +15,7 @@ class HelloWorld:
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
             service_name='Orchestrator',
+            network='testnet'
         )
             
     def deploy(self):
