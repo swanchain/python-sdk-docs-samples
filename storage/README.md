@@ -7,20 +7,16 @@ This directory contains samples for Swan MultiChain Storage System. Swan MultiCh
 
 ### Authentication (API Key)
 
-The following is a template since I am unable to get the api key myself, someone with access to the MCS service please change these steps.
+This sample (and Swan SDK) requires you to have API Key from MCS.
 
-This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
+Steps to get a MCS API Key:
 
-Steps to get an Orchestrator API Key:
-
-- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
+- Go to [Multi Chain Storage](https://www.multichain.storage/home). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
-- Click the user icon on the top right.
-- Click 'Show API-Key' -> 'New API Key'
+- Click the gear icon on the top right and select 'Setting'.
+- Click 'Create API Key'
 - Store your API Key safely, do not share with others.
 
-Steps to get a Storage API Key:
-- Go to [MCS](https://www.multichain.storage/home)
 
 ### Install Dependencies
 1. Clone the python-sdk-docs-samples.
