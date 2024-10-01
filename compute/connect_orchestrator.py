@@ -1,6 +1,7 @@
 import os
 import dotenv
 import swan
+import logging
 from swan import Orchestrator
 
 
@@ -31,8 +32,8 @@ if __name__ == '__main__':
     swan_api_key = os.getenv("SWAN_API_KEY")
     swan_orchestrator = login_to_swan_orchestrator_through_api_key(swan_api_key=swan_api_key)
     # Make sure connected to correct Orchestrator backend API.
-    print(f'Connected to \x1b[6;30;42m{swan_orchestrator.swan_url}\x1b[0m')
+    logging.info(f'Connected to \x1b[6;30;42m{swan_orchestrator.swan_url}\x1b[0m')
 
     verification = verify_connection(swan_orchestrator=swan_orchestrator)
     if verification:
-        print('Connected to Swan mainnet.')
+        logging.info('Connected to Swan Orchestrator.')
