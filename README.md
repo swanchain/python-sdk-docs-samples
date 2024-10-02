@@ -23,10 +23,12 @@ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 
 To use `swan-sdk`, an Orchestrator API key is required.
 
-- Go to [Orchestrator Dashboard](https://orchestrator.swanchain.io/provider-status). Make sure you're under the Mainnet environment.
+Steps to get an Orchestrator API Key:
+
+- Go to [Swan Chain Console](https://console.swanchain.io/api-keys). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
-- Click the user icon on the top right.
-- Click 'Show API-Key' -> 'New API Key'
+- Click 'Generate API Key'.
+- Store your API Key safely, do not share with others.
 
 To use the `swan-sdk` Multi-Chain Storage (MCS) service, an MCS API key is required.
 
@@ -35,7 +37,7 @@ Steps to get a MCS API Key:
 - Go to [Multi Chain Storage](https://www.multichain.storage/home). Make sure you're under the Mainnet environment.
 - Login through MetaMask.
 - Click the gear icon on the top right and select 'Setting'.
-- Click 'Create API Key'
+- Click 'Create API Key'.
 - Store your API Key safely, do not share with others.
 
 
