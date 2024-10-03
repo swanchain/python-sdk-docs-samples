@@ -10,8 +10,7 @@ class Llama:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
-            service_name='Orchestrator',
-            network='testnet'
+            service_name='Orchestrator'
         )
             
     def deploy(self):
