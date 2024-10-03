@@ -52,9 +52,9 @@ if __name__ == '__main__':
     dotenv.load_dotenv("../.env")
 
     # Input task UUID
-    task_uuid = 'c99ae712-118e-43ac-b61a-566fae5ac033'
+    task_uuid = '<task_uuid>'
     # instance_type has to be same as the originals
-    instance_type = 'C1ae.medium'
+    instance_type = '<instance_type>'
 
     swan_api_key = os.getenv("SWAN_API_KEY")
     wallet_address = os.getenv("WALLET_ADDRESS")
@@ -68,6 +68,6 @@ if __name__ == '__main__':
         private_key=private_key, 
         task_uuid=task_uuid,
         instance_type=instance_type,
-        duration=2345,
+        duration=3600,
     )
     print(f'Task renewed! Payment Tx Hash: \x1b[6;30;42m{tx_hash}\x1b[0m')
