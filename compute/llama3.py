@@ -10,7 +10,8 @@ class Llama:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
-            service_name='Orchestrator'
+            service_name='Orchestrator',
+            network='testnet'
         )
             
     def deploy(self):
@@ -18,7 +19,7 @@ class Llama:
             repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/Llama3-8B-LLM-Chat',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='C1ae.small',
+            instance_type='G1ae.medium',
             auto_pay=True
         )
         self.task_uuid = result['task_uuid']
