@@ -18,7 +18,7 @@ class Llama:
             repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/Llama3-8B-LLM-Chat',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='C1ae.small',
+            instance_type='G1ae.medium',
             auto_pay=True
         )
         self.task_uuid = result['task_uuid']
