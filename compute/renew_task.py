@@ -1,3 +1,7 @@
+import logging
+import os
+
+import dotenv
 import swan
 from swan import Orchestrator
 
@@ -33,23 +37,28 @@ def extend_task_duration(
     Return:
         Payment Tx Hash.
     """
-    result = swan_orchestrator.renew_payment(
-        task_uuid=task_uuid, 
-        private_key=private_key, 
+
+    api_result = swan_orchestrator.renew_task(
+        task_uuid=task_uuid,
+        private_key=private_key,
+        auto_pay=True,
+        instance_type=instance_type,
         duration=duration,
-        instance_type=instance_type
     )
-    return result
+    logging.info(f"{api_result=}")
+    return api_result["tx_hash"]
 
 if __name__ == '__main__':
+    dotenv.load_dotenv("../.env")
+
     # Input task UUID
-    task_uuid = '<uuid>'
+    task_uuid = '<task_uuid>'
     # instance_type has to be same as the originals
     instance_type = '<instance_type>'
 
-    swan_api_key = '<swan_api_key>'
-    wallet_address = '<wallet_address>'
-    private_key = '<private_key>'
+    swan_api_key = os.getenv("SWAN_API_KEY")
+    wallet_address = os.getenv("WALLET_ADDRESS")
+    private_key = os.getenv("PRIVATE_KEY")
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
@@ -58,6 +67,7 @@ if __name__ == '__main__':
         swan_orchestrator=swan_orchestrator, 
         private_key=private_key, 
         task_uuid=task_uuid,
-        instance_type=instance_type
+        instance_type=instance_type,
+        duration=3600,
     )
     print(f'Task renewed! Payment Tx Hash: \x1b[6;30;42m{tx_hash}\x1b[0m')
