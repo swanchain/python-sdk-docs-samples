@@ -19,7 +19,7 @@ class Example:
             
     def deploy(self):
         result: TaskCreationResult = self.orchestrator.create_task(
-            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/Llama3-8B-LLM-Chat',
+            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/Ollama',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
             instance_type='C1ae.medium'
@@ -69,7 +69,7 @@ class Example:
             async with aiohttp.ClientSession() as session:
                 # after timeout, assume app url is not running
                 while time.time() - start_time < timeout_running * 60:
-                    async with session.get(url) as resp:
+                    async with session.get(url, ssl=False) as resp:
                         if resp.status == 200:
                             logging.info(f"\x1b[32mApp is running at\x1b[0m \x1b[6;30;42m{url}\x1b[0m")
                             # logging.info(f"Response: {await resp.text()}")
