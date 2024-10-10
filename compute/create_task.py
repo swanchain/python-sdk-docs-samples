@@ -50,8 +50,7 @@ def deploy_task(
         private_key=private_key,
         instance_type='C1ae.small',
         region='global',
-        duration=3600,
-        start_in=300
+        duration=3600
     )
     # Check task uuid (Unique Identifier)
     # Task UUID is required for checking and performing futher operation on the created tasks.
