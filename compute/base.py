@@ -15,7 +15,8 @@ class ExampleBase:
     def __init__(self):
         self.orchestrator = swan.resource(
             api_key=os.getenv("SWAN_API_KEY"), 
-            service_name='Orchestrator'
+            service_name='Orchestrator',
+            network='testnet'
         )
         self.task_uuid = None
         self.tx_hash = None

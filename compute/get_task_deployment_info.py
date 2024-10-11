@@ -14,7 +14,8 @@ def setup_swan_orchestrator():
     """
     swan_orchestrator = swan.resource(
         api_key=os.getenv("SWAN_API_KEY"), 
-        service_name='Orchestrator'
+        service_name='Orchestrator',
+        network='testnet'
     )
     return swan_orchestrator
 

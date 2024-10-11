@@ -17,7 +17,8 @@ def login_to_swan_orchestrator_through_api_key(swan_api_key: str) -> Orchestrato
     # Create Orchestrator instance.
     swan_orchestrator = swan.resource(
         api_key=swan_api_key, 
-        service_name='Orchestrator'
+        service_name='Orchestrator',
+        network='testnet'
     )
     return swan_orchestrator
 
