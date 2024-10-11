@@ -36,7 +36,11 @@ class ExampleBase:
                             logging.info(f"\x1b[32mApp is running at\x1b[0m \x1b[6;30;42m{url}\x1b[0m")
                             return True
                 except aiohttp.ClientError as e:
-                    logging.debug(f"Error connecting to {url}: {e}")
+                    logging.debug(f"Error connecting to {url}")
+                except asyncio.TimeoutError:
+                    logging.debug(f"Timeout connecting to {url}")
+                except Exception as e:
+                    logging.debug(f"An error occurred when accessing {url}. {e}")
                 
                 await asyncio.sleep(5)
             
@@ -98,7 +102,7 @@ class ExampleBase:
         try:
             asyncio.run(self.wait_for_running_async(timeout_deploy, timeout_running))
         except Exception as e:
-            logging.error(f"An error occurred while waiting for the app to run: {e}")
+            logging.error(f"An error occurred while waiting for the app to run. {e}")
 
 
 if __name__ == "__main__":
