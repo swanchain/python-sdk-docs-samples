@@ -1,9 +1,13 @@
-import json
 import os
+import dotenv
+import json
+import logging
+import sys
 
 import dotenv
 import swan
 from swan import Orchestrator
+
 
 def setup(swan_api_key: str):
     """Setup required informations for task deployment.
@@ -18,6 +22,7 @@ def setup(swan_api_key: str):
         service_name='Orchestrator'
     )
     return swan_orchestrator
+
 
 def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
     """Create a task early termination request.
@@ -34,11 +39,16 @@ def terminate_existing_task(swan_orchestrator: Orchestrator, task_uuid: str):
     result = swan_orchestrator.terminate_task(task_uuid=task_uuid)
     return result
 
-if __name__ == '__main__':
-    dotenv.load_dotenv("../.env")
 
-    # Input task UUID
-    task_uuid = '<task_uuid>'
+if __name__ == '__main__':
+    dotenv.load_dotenv()
+
+    if len(sys.argv) != 2:
+        logging.error("Usage: python terminate_task.py <task_uuid>")
+        sys.exit(1)
+
+    task_uuid = sys.argv[1]
+
 
     swan_api_key = os.getenv("SWAN_API_KEY")
     # Connect to Orchestrator
@@ -46,4 +56,8 @@ if __name__ == '__main__':
 
     # Terminate existing task
     result = terminate_existing_task(swan_orchestrator=swan_orchestrator, task_uuid=task_uuid)
-    print(json.dumps(result, indent=2, ensure_ascii=False))
+    if result:
+        logging.info(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
+        logging.info(f'Task {task_uuid} termination request success.')
+    else:
+        logging.error(f'Task {task_uuid} termination request failed.')

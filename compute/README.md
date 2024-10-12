@@ -1,13 +1,30 @@
 [![PyPI version](https://img.shields.io/pypi/v/swan-sdk)](https://pypi.org/project/swan-sdk/)
-# Swan SDK Orchestrator Task Samples
+# Swan SDK Orchestrator Samples <!-- omit in toc -->
 
 This directory contains samples for Swan Orchestrator. Swan Orchestrator is the Web3 cloud computing solution for tasks creation, deployment and management. User can create and manage tasks through samples under this directory. For more information checkout [Swan Developer Docs](https://docs.swanchain.io/).
+
+- [Setup](#setup)
+  - [Authentication (API Key)](#authentication-api-key)
+  - [Install Dependencies](#install-dependencies)
+  - [Store Your Environment Variables Securely](#store-your-environment-variables-securely)
+- [Run Samples](#run-samples)
+  - [Get Instance Resources](#get-instance-resources)
+  - [Instance Configuration Example](#instance-configuration-example)
+  - [Connect to Orchestrator (with Swan API Key)](#connect-to-orchestrator-with-swan-api-key)
+  - [Create Task](#create-task)
+  - [Renew Task / Extend Task Duration](#renew-task--extend-task-duration)
+  - [Terminate Task](#terminate-task)
+  - [Get Task List](#get-task-list)
+  - [Get Task Deployment Info](#get-task-deployment-info)
+  - [Pre-approve Payment](#pre-approve-payment)
+  - [Other Examples](#other-examples)
+
 
 ## Setup
 
 ### Authentication (API Key)
 
-This sample (and Swan SDK) requires you to have API Key from Swan Orchestrator.
+Samples (and Swan SDK) requires you to have API Key from Swan Orchestrator.
 
 Steps to get an API Key:
 
@@ -22,10 +39,7 @@ Steps to get an API Key:
 ```bash
 $ git clone https://github.com/swanchain/python-sdk-docs-samples.git
 ```
-and
-```bash
-$ cd compute
-```
+
 2. Install and updgrade pip and virtualenv if you do not already have them.
 3. Create virtualenv compatible with Python 3.7+
 ```bash
@@ -38,77 +52,98 @@ $ pip install -r requirements.txt
 ```
 
 ### Store Your Environment Variables Securely 
-Python-dotenv is recommended to be used to store environment variables safely. (Contained within requirements.txt)
-1. Install python-dotenv (if you have not)
-```bash
-$ pip install python-dotenv
-```
-or
-```bash
-$ pip install -r requirements.txt
-```
-2. Create a new .env file
-```bash
-$ sudo vim .env
-```
-3. Store your personal information
-public address will be required for authorization on Swan Orchestrator. \
-private address will be required for signing onchain transactions. \
-API key will be required for using Swan Orchestrator APIs.
+
+- public address will be required for authorization on Swan Orchestrator. 
+- private address will be required for signing onchain transactions. 
+- API key will be required for using Swan Orchestrator APIs.
+
 ```txt
 WALLET_ADDRESS=<your_wallet_address>
 PRIVATE_KEY=<your_private_key>
-SWAN_API_KEY=<your_swanchain_api_key>
+SWAN_API_KEY=<your_swan_api_key>
 ```
-4. Load your personal information (Optional)
-We recommand storing personal information as environment variables for safety.
-```python
-from dotenv import load_dotenv
-load_dotenv()
 
-import os
-
-WALLET_ADDRESS = os.getenv('WALLET_ADDRESS')
-PRIVATE_KEY = os.getenv('PRIVATE_KEY')
-SWAN_API_KEY = os.getenv('SWAN_API_KEY')
-```
 
 ## Run Samples
 
 ### Get Instance Resources
-Retrieve all currently available CP resources online.
+
+This example shows how to retrieve all currently available CP resources online.
+
 ```bash
 $ python compute/get_instance_resources.py
 ```
 
-### Get Instance Information (price)
-Retrieve CP resources detail with resources type.
-```bash
-$ python compute/get_instance_information.py
-```
-
 ### Instance Configuration Example
-Detailed breakdown of instance configuration structure and usage.
+
+This example shows detailed breakdown of instance configuration structure and usage.
+
 ```bash
 $ python compute/instance_configuration_example.py
 ```
 
 ### Connect to Orchestrator (with Swan API Key)
+
+This example shows how to connect to Orchestrator.
+
 ```bash
 $ python compute/connect_orchestrator.py
 ```
 
 ### Create Task
+
+This example shows how to create task with Swan SDK.
+
 ```bash
 $ python compute/create_task.py
 ```
 
 ### Renew Task / Extend Task Duration
+
+This example shows how to extend a task's duration.
+
 ```bash
-$ python compute/renew_task.py 
+$ python compute/renew_task.py '<task_uuid>'
 ```
 
 ### Terminate Task
+
+This example shows how to early terminate a task.
+
 ```bash
-$ python compute/terminate_task.py
+$ python compute/terminate_task.py '<task_uuid>'
+```
+
+### Get Task List
+
+This example shows how to get a list of tasks under the user of API Key and wallet address.
+
+```bash
+$ python compute/get_task_list.py
+```
+
+### Get Task Deployment Info
+
+This example shows how to get the task deployment info.
+
+```bash
+$ python compute/get_task_deployment_info.py '<task_uuid>'
+```
+
+### Pre-approve Payment
+
+This example shows how to approve an amount for payment in advance.
+
+```bash
+$ python compute/payment_approve.py
+```
+
+### Other Examples
+
+These examples shows how to deploy specific applications.
+
+```bash
+$ python compute/hello-world.py         # hello world app
+$ python compute/deploy-chainnode.py    # chainnode app
+$ python compute/deploy-llama3-model.py # llama3 model app
 ```
