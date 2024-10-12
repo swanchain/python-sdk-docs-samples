@@ -47,8 +47,7 @@ def extend_task_duration(
         private_key=private_key, 
         duration=duration,
     )
-    logging.info(f"{api_result=}")
-    return api_result["tx_hash"]
+    return result
 
 
 if __name__ == '__main__':
