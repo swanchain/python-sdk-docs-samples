@@ -3,7 +3,6 @@ import dotenv
 import logging
 import json
 import sys
-
 import swan
 from swan import Orchestrator
 from swan.object import TaskRenewalResult
@@ -48,7 +47,8 @@ def extend_task_duration(
         private_key=private_key, 
         duration=duration,
     )
-    return result
+    logging.info(f"{api_result=}")
+    return api_result["tx_hash"]
 
 
 if __name__ == '__main__':
@@ -63,7 +63,6 @@ if __name__ == '__main__':
     swan_api_key = os.getenv("SWAN_API_KEY")
     wallet_address = os.getenv("WALLET_ADDRESS")
     private_key = os.getenv("PRIVATE_KEY")
-
     # Connect to Orchestrator
     swan_orchestrator = setup(swan_api_key)
 
