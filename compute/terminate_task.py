@@ -4,6 +4,7 @@ import json
 import logging
 import sys
 
+import dotenv
 import swan
 from swan import Orchestrator
 

@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
     hello_world.store_task_info_to_json(task_info=task_result.to_dict(), directory='task_creation_info.json')
 
-    hello_world.wait_for_running()
+    hello_world.wait_for_running(timeout_deploy=10, timeout_running=5)
 
     task_info: TaskDeploymentInfo = hello_world.get_deployment_info()
 
