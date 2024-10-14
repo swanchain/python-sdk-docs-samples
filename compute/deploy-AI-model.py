@@ -12,10 +12,10 @@ from swan.object import TaskCreationResult, TaskDeploymentInfo
 
 from base import ExampleBase
 
-class Llama3(ExampleBase):
+class AIDemo(ExampleBase):
     def deploy(self):
         result: TaskCreationResult = self.orchestrator.create_task(
-            repo_uri='https://github.com/swanchain/awesome-swanchain/blob/main/Google-gemma-7B-LLM-Chat',
+            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/AI-LLM-WithAPI',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
             instance_type='G1ae.medium'
@@ -36,6 +36,6 @@ class Llama3(ExampleBase):
 if __name__ == "__main__":
     dotenv.load_dotenv()
 
-    hello_world = Llama3()
+    hello_world = AIDemo()
     hello_world.deploy()
-    hello_world.wait_for_running(timeout_deploy=20, timeout_running=5)
+    hello_world.wait_for_running(timeout_deploy=20, timeout_running=10)
