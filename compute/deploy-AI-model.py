@@ -18,7 +18,7 @@ class AIDemo(ExampleBase):
             repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/AI-LLM-WithAPI',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='G1ae.medium'
+            instance_type='P1ae.xlarge'
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
