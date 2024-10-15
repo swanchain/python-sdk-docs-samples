@@ -48,7 +48,7 @@ def display_config_info(instance_config: dict):
 
 
 if __name__ == '__main__':
-    instance_type = 'G1ae.small'
+    instance_type = 'P1ae.xlarge'
     # available resources
     instance_config = instance_configuration(instance_type=instance_type)
     # Output the first instance configuration on the list
