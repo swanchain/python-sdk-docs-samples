@@ -12,13 +12,14 @@ from swan.object import TaskCreationResult, TaskDeploymentInfo
 
 from base import ExampleBase
 
+
 class AIDemo(ExampleBase):
     def deploy(self):
         result: TaskCreationResult = self.orchestrator.create_task(
-            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/AI-LLM-WithAPI',
+            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/MusicGen',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='P1ae.xlarge'
+            instance_type='C1ae.small'
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
