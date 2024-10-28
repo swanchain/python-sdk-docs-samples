@@ -19,7 +19,7 @@ class AIDemo(ExampleBase):
             repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/MusicGen',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='C1ae.small'
+            instance_type='C1ae.medium'
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
