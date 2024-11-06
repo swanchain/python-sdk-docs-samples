@@ -12,15 +12,14 @@ from swan.object import TaskCreationResult, TaskDeploymentInfo
 
 from base import ExampleBase
 
-class HelloWorld(ExampleBase):
-            
+
+class AIDemo(ExampleBase):
     def deploy(self):
         result: TaskCreationResult = self.orchestrator.create_task(
-            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/hello_world',
+            repo_uri='https://github.com/swanchain/awesome-swanchain/tree/main/MusicGen',
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            instance_type='C1ae.small',
-            # ip_whitelist=['xxx.xxx.xxx.xxx']
+            instance_type="2*R1ae.medium"   # multi-gpu instance
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
@@ -38,6 +37,6 @@ class HelloWorld(ExampleBase):
 if __name__ == "__main__":
     dotenv.load_dotenv()
 
-    hello_world = HelloWorld()
+    hello_world = AIDemo()
     hello_world.deploy()
-    hello_world.wait_for_running()
+    hello_world.wait_for_running(timeout_deploy=20, timeout_running=10)
