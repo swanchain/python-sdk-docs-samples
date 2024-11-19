@@ -20,7 +20,9 @@ class HelloWorld(ExampleBase):
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
             instance_type='C1ae.small',
-            # ip_whitelist=['xxx.xxx.xxx.xxx']
+            # duration=3600,                            # default 3600 seconds
+            # preferred_cp_list=['cp_account_address']  # only the first one is used
+            # ip_whitelist=['ip_address_1']
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
