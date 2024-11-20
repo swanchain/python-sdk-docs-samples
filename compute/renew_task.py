@@ -74,6 +74,5 @@ if __name__ == '__main__':
     )
     if renew_result:
         logging.info(json.dumps(renew_result.to_dict(), indent=2, ensure_ascii=False))
-        logging.info(f'Task {task_uuid} renew request success.')
     else:
         logging.error(f'Task {task_uuid} renew request failed.')
