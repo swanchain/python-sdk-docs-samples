@@ -28,6 +28,9 @@ def get_task_list():
         page=1,
         size=2
     )
+    if not result:
+        logging.error("\x1b[31mFailed to get task list.\x1b[0m")
+        return
     logging.info(json.dumps(result.to_dict(), indent=2, ensure_ascii=False))
 
 if __name__ == "__main__":
