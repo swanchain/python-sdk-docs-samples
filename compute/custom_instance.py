@@ -56,8 +56,8 @@ class CustomInstance(ExampleBase):
 if __name__ == "__main__":
     dotenv.load_dotenv()
 
-    hello_world = CustomInstance()
-    hello_world.check_gpu_selection_list()
-    hello_world.set_and_check_custom_instance()
-    hello_world.deploy()
-    hello_world.wait_for_running(timeout_deploy=20, timeout_running=10)
+    ex = CustomInstance()
+    ex.check_gpu_selection_list()
+    ex.set_and_check_custom_instance()
+    ex.deploy()
+    ex.wait_for_running(timeout_deploy=20, timeout_running=10)
