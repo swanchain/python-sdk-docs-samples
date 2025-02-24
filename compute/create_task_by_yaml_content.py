@@ -1,17 +1,23 @@
-import os
-import time
-import dotenv
-import logging
-import asyncio
-import aiohttp
 import json
+import logging
+import os
 
-import swan
-from swan import Orchestrator
+import dotenv
 from swan.object import TaskCreationResult, TaskDeploymentInfo
-from swan.object.task_spec import YamlTaskSpec, HardwareSpec, GpuSpec, TaskSpecFactory
+from swan.object.task_spec import HardwareSpec, GpuSpec, TaskSpecFactory
 
 from base import ExampleBase
+
+YAML_CONTENT = """
+version: "2.0"
+services:
+ image: alex6nbai/gpu_benchmark:20250219-4
+ envs:
+  - NCCL_P2P_DISABLE=1
+  - NCCL_SHM_DISABLE=1
+ expose_port:
+  - 8000
+"""
 
 class HelloWorld(ExampleBase):
 
@@ -28,21 +34,8 @@ class HelloWorld(ExampleBase):
                     )
                 ]
             ),
-            yaml_content="""
-version: "2.0"
-services:
-  fastapi:
-    image: alex6nbai/gpu_benchmark:20250219-4
-    expose:
-      - port: 8000
-    env:
-      - NCCL_P2P_DISABLE=1
-      - NCCL_SHM_DISABLE=1
-deployment:
-  fastapi:
-    lagrange:
-      count: 1
-""")
+            yaml_content=YAML_CONTENT,
+        )
 
         result: TaskCreationResult = self.orchestrator.create_task(
             base_task_spec=yaml_task_spec,
