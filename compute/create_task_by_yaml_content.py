@@ -8,15 +8,16 @@ from swan.object.task_spec import HardwareSpec, GpuSpec, TaskSpecFactory
 
 from base import ExampleBase
 
+
 YAML_CONTENT = """
-version: "2.0"
 services:
- image: alex6nbai/gpu_benchmark:20250219-4
- envs:
-  - NCCL_P2P_DISABLE=1
-  - NCCL_SHM_DISABLE=1
- expose_port:
+  cmd:
+  envs:
+  - sshKey=ssh-rsa 
+  expose_port:
   - 8000
+  image: alex6nbai/ubuntu:22.04
+version: '0.0'
 """
 
 class HelloWorld(ExampleBase):
@@ -26,11 +27,11 @@ class HelloWorld(ExampleBase):
             hardware_spec=HardwareSpec(
                 cpu=2,
                 memory=4,
-                storage=30,
+                storage=20,
                 gpus=[
                     GpuSpec(
-                        gpu_model="NVIDIA 3080",
-                        count=1,
+                        gpu_model="CPU",
+                        count=0,
                     )
                 ]
             ),
