@@ -12,11 +12,16 @@ from base import ExampleBase
 YAML_CONTENT = """
 services:
   cmd:
+  - --model
+  - anyisalin/L3-70B-Euryale-v2.1-AWQ
+  - --gpu-memory-utilization
+  - 0.95
+  - --tensor_parallel_size=2
   envs:
   - sshKey=ssh-rsa 
   expose_port:
   - 8000
-  image: alex6nbai/ubuntu:22.04
+  image: swanhub/nb_vllm:vllm-0.8.5-002
 version: '0.0'
 """
 
@@ -25,13 +30,13 @@ class HelloWorld(ExampleBase):
     def deploy(self):
         yaml_task_spec = TaskSpecFactory.build_yaml_task(
             hardware_spec=HardwareSpec(
-                cpu=2,
-                memory=4,
-                storage=20,
+                cpu=20,
+                memory=40,
+                storage=100,
                 gpus=[
                     GpuSpec(
-                        gpu_model="CPU",
-                        count=0,
+                        gpu_model="NVIDIA 3090",
+                        count=2,
                     )
                 ]
             ),
@@ -42,7 +47,7 @@ class HelloWorld(ExampleBase):
             base_task_spec=yaml_task_spec,
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            duration=3600,
+            duration=3900,
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
