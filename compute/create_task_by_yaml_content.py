@@ -8,15 +8,21 @@ from swan.object.task_spec import HardwareSpec, GpuSpec, TaskSpecFactory
 
 from base import ExampleBase
 
+
 YAML_CONTENT = """
-version: "2.0"
 services:
- image: alex6nbai/gpu_benchmark:20250219-4
- envs:
-  - NCCL_P2P_DISABLE=1
-  - NCCL_SHM_DISABLE=1
- expose_port:
+  cmd:
+  - --model
+  - anyisalin/L3-70B-Euryale-v2.1-AWQ
+  - --gpu-memory-utilization
+  - 0.95
+  - --tensor_parallel_size=2
+  envs:
+  - sshKey=ssh-rsa 
+  expose_port:
   - 8000
+  image: swanhub/nb_vllm:vllm-0.8.5-002
+version: '0.0'
 """
 
 class HelloWorld(ExampleBase):
@@ -24,13 +30,13 @@ class HelloWorld(ExampleBase):
     def deploy(self):
         yaml_task_spec = TaskSpecFactory.build_yaml_task(
             hardware_spec=HardwareSpec(
-                cpu=2,
-                memory=4,
-                storage=30,
+                cpu=20,
+                memory=40,
+                storage=100,
                 gpus=[
                     GpuSpec(
-                        gpu_model="NVIDIA 3080",
-                        count=1,
+                        gpu_model="NVIDIA 3090",
+                        count=2,
                     )
                 ]
             ),
@@ -41,7 +47,7 @@ class HelloWorld(ExampleBase):
             base_task_spec=yaml_task_spec,
             wallet_address=os.getenv("WALLET_ADDRESS"),
             private_key=os.getenv("PRIVATE_KEY"),
-            duration=3600,
+            duration=3900,
         )
         self.task_uuid = result.task_uuid if result else None
         self.tx_hash = result.tx_hash if result else None
